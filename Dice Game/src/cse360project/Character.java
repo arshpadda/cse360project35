@@ -28,7 +28,7 @@ public abstract class Character {
 	abstract getWeapon3();
 	/**
 	 * Abstract method that when implemented should update the value of
-	 * the  health of character
+	 * the Health of character
 	 */
 	abstract updateHealth();
 	/**
