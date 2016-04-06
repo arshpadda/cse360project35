@@ -1,3 +1,5 @@
+//CSE360
+
 package cse360project;
 
 public class Dice {
