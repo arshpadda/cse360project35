@@ -3,7 +3,7 @@ package cse360project;
  * Basic Abstract Class that has to b inherited into the  character class
  * and implemented
  * @author Arsh Padda
- * @version Apr 6, 2016
+ * @version Apr 6,2016
  */
 public abstract class Character {
 	double healthBar;
