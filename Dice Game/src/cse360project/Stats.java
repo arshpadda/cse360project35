@@ -47,6 +47,15 @@ public class Stats
 	 */
 	public Stats(int numChars, int numStats)
 	{
+		//initialize temporary stats to 0
+		tempDamageDone = new int[numChars];
+		tempDamageTaken = new int[numChars];
+		for(int charIndex = 0; charIndex < numChars; charIndex++)
+		{
+			tempDamageDone[charIndex] = 0;
+			tempDamageTaken[charIndex] = 0;
+		}
+		
 		//create with the correct size
 		stats = new int[numStats][numChars];
 		
@@ -120,10 +129,12 @@ public class Stats
 	 * @param character2 int representing the second character
 	 * @param c1Damage damage dealt by character1, taken by character2
 	 * @param c2Damage damage dealt by character2, taken by character1
+	 * @param c1Loc body part hit by character1 on character2
+	 * @param c2Loc body part hit by character2 on character1
 	 * @param c1Health character1's health before the attack
 	 * @param c2Health character2's health before the attack
 	 */
-	public void attackUpdate(int character1, int character2, int c1Damage, int c2Damage, int c1Health, int c2Health)
+	public void attackUpdate(int character1, int character2, int c1Damage, int c2Damage, int c1Loc, int c2Loc, int c1Health, int c2Health)
 	{
 		
 	}
@@ -138,23 +149,23 @@ public class Stats
 		String output = "";
 		
 		//add first stat to the string
-		output = output + "Wins:"						 + stats[0][charInt] + "\n";
+		output = output + "Wins:\t\t"						 + stats[0][charInt] + "\n";
 		//repeat for each stat
-		output = output + "Losses:" 					 + stats[1][charInt] + "\n";
+		output = output + "Losses:\t\t" 					 + stats[1][charInt] + "\n";
 		//for now, assume draw is possible
-		output = output + "Draws:"						 + stats[2][charInt] + "\n";
-		output = output + "Total Turns:" 	   			 + stats[3][charInt] + "\n";
-		output = output + "Damage Done:"				 + stats[4][charInt] + "\n";
-		output = output + "Damage Taken:"				 + stats[5][charInt] + "\n";
-		output = output + "Head Hits:"					 + stats[6][charInt] + "\n";
-		output = output + "Body Hits:"					 + stats[7][charInt] + "\n";
-		output = output + "Leg Hits:"		 			 + stats[8][charInt] + "\n";
-		output = output + "Critical Hits:"				 + stats[9][charInt] + "\n";
-		output = output + "Most Turns:"					 + stats[10][charInt] + "\n";
+		output = output + "Draws:\t\t"						 + stats[2][charInt] + "\n";
+		output = output + "Total Turns:\t\t" 	   			 + stats[3][charInt] + "\n";
+		output = output + "Damage Done:\t\t"				 + stats[4][charInt] + "\n";
+		output = output + "Damage Taken:\t"					 + stats[5][charInt] + "\n";
+		output = output + "Head Hits:\t\t"					 + stats[6][charInt] + "\n";
+		output = output + "Body Hits:\t\t"					 + stats[7][charInt] + "\n";
+		output = output + "Leg Hits:\t\t"		 			 + stats[8][charInt] + "\n";
+		output = output + "Critical Hits:\t\t"				 + stats[9][charInt] + "\n";
+		output = output + "Most Turns:\t\t"					 + stats[10][charInt] + "\n";
 		
 		//add temporary stats
-		output = output + "Tournament Damage Dealt:"	 + tempDamageDone[charInt] + "\n";
-		output = output + "Tournament Damage Taken:"	 + tempDamageDone[charInt] + "\n";
+		output = output + "Tournament Damage Dealt:\t"	 + tempDamageDone[charInt] + "\n";
+		output = output + "Tournament Damage Taken:\t"	 + tempDamageDone[charInt] + "\n";
 		
 		return output;
 	}
