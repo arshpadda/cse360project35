@@ -9,7 +9,7 @@ import java.util.*;
 
 public class StatPanel extends JPanel
 {
-	//stats object to contain and update stats
+	//stats object to contain and update stats.
 	Stats stats;
 	GridBagLayout gridBagLayout;
 	

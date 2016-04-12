@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Stats
 {
 	/*
-	stats to be tracked between sessions, 2d int array
+	stats to be tracked between sessions, 2d int array.
 	row index, stat:			column index, character:
 	wins		 = 0			batman 		= 0
 	losses		 = 1			superman 	= 1
