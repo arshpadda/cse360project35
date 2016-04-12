@@ -38,6 +38,9 @@ public class Stats
 	private int[] tempDamageDone;
 	private int[] tempDamageTaken;
 	
+	//String array containing names of all characters
+	private String[] characters;
+	
 
 	
 	/**
@@ -47,6 +50,10 @@ public class Stats
 	 */
 	public Stats(int numChars, int numStats)
 	{
+		//String array contains the names of characters
+		//for now, initialize array here, rather than read from file
+		characters = new String[] {"Batman","Superman"};
+		
 		//initialize temporary stats to 0
 		tempDamageDone = new int[numChars];
 		tempDamageTaken = new int[numChars];
@@ -121,6 +128,27 @@ public class Stats
 		{
 			error.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Convert a character's name into an integer representing them
+	 * @param name search for the name in the array
+	 * @return the integer represent the name, also the index in the array
+	 */
+	int nameToInt(String name)
+	{
+		//search for the name in the characters array
+		int nameIndex = 0;
+		boolean nameFound = false;
+		while(nameIndex < characters.length && !nameFound)
+		{
+			//compare the names
+			if(name.equals(characters[nameIndex]))			
+				nameFound = true;
+			else			
+				nameIndex++;
+		}
+		return nameIndex;
 	}
 	
 	/**
