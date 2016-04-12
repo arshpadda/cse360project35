@@ -9,20 +9,34 @@ import java.util.*;
 
 public class StatPanel extends JPanel
 {
+	//stats object to contain and update stats
+	Stats stats;
+	GridBagLayout gridBagLayout;
 	
+	//selects the character
+	JComboBox comboBox;
+	JComboBox comboBox_1;
+	
+	Component rigidArea;
+	
+	//contains each character's stats
+	JTextArea textArea;
+	JTextArea textArea_1;
 	
 	//Constructor initializes each component and arrange them using layouts
 	public StatPanel(int numChars, int numStats)
 	{
-		Stats stats = new Stats(numChars, numStats);
-		GridBagLayout gridBagLayout = new GridBagLayout();
+		//
+		stats = new Stats(numChars, numStats);
+		
+		gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setBackground(Color.LIGHT_GRAY);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Batman", "Superman"}));
 		comboBox.setSelectedIndex(0);
@@ -34,7 +48,7 @@ public class StatPanel extends JPanel
 		gbc_comboBox.gridy = 0;
 		add(comboBox, gbc_comboBox);
 		
-		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1 = new JComboBox();
 		comboBox_1.setBackground(Color.LIGHT_GRAY);
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Batman", "Superman"}));
 		comboBox_1.setSelectedIndex(1);
@@ -46,14 +60,14 @@ public class StatPanel extends JPanel
 		gbc_comboBox_1.gridy = 0;
 		add(comboBox_1, gbc_comboBox_1);
 		
-		Component rigidArea = Box.createRigidArea(new Dimension(20, 20));
+		rigidArea = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea = new GridBagConstraints();
 		gbc_rigidArea.insets = new Insets(0, 0, 5, 5);
 		gbc_rigidArea.gridx = 1;
 		gbc_rigidArea.gridy = 1;
 		add(rigidArea, gbc_rigidArea);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		textArea.setBackground(UIManager.getColor("Button.background"));
 		textArea.setEditable(false);
 		GridBagConstraints gbc_textArea = new GridBagConstraints();
@@ -64,7 +78,7 @@ public class StatPanel extends JPanel
 		gbc_textArea.gridy = 2;
 		add(textArea, gbc_textArea);
 		
-		JTextArea textArea_1 = new JTextArea();
+		textArea_1 = new JTextArea();
 		textArea_1.setBackground(UIManager.getColor("Button.background"));
 		textArea_1.setEditable(false);
 		GridBagConstraints gbc_textArea_1 = new GridBagConstraints();
@@ -78,22 +92,44 @@ public class StatPanel extends JPanel
 		textArea.setText(stats.printChar(0));
 		textArea_1.setText(stats.printChar(1));
 
-		
+		//listeners for the JComboBoxes
+		comboBox.addActionListener(new ComboListener());
+		comboBox.addActionListener(new ComboListener());
 	}	
 
 	
-	public void updateStats()
+	/**
+	 * Update the statistics for two characters, parameters are the attack's details
+	 * @param character1 int representing one character
+	 * @param character2 int representing the second character
+	 * @param c1Damage damage dealt by character1, taken by character2
+	 * @param c2Damage damage dealt by character2, taken by character1
+	 * @param c1Loc body part hit by character1 on character2
+	 * @param c2Loc body part hit by character2 on character1
+	 * @param c1Health character1's health before the attack
+	 * @param c2Health character2's health before the attack
+	 */
+	public void updateStats(int character1, int character2, int c1Damage, int c2Damage, int c1Loc, int c2Loc, int c1Health, int c2Health)
 	{
-		
+		//Directly pass the arguments to stats.attackUpdate()
+		stats.attackUpdate(character1, character2, c1Damage, c2Damage, c1Loc, c2Loc, c1Health, c2Health);
 	}
 
 	
-	private class ButtonListener implements ActionListener
+	private class ComboListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
 		{
 			//checks that submit button caused event
-			Object source = event.getSource();
+			JComboBox source = (JComboBox)event.getSource();
+			if(source == comboBox)
+			{
+				textArea.setText(stats.printChar(stats.nameToInt((String)source.getSelectedItem())));
+			}
+			else if (source == comboBox_1)
+			{
+				textArea_1.setText(stats.printChar(stats.nameToInt((String)source.getSelectedItem())));
+			}
 			
 		}
 	}
