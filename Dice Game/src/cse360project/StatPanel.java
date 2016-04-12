@@ -10,18 +10,19 @@ import java.util.*;
 public class StatPanel extends JPanel
 {
 	//stats object to contain and update stats.
-	Stats stats;
-	GridBagLayout gridBagLayout;
+	private Stats stats;
+	private GridBagLayout gridBagLayout;
 	
 	//selects the character
-	JComboBox comboBox;
-	JComboBox comboBox_1;
+	private JComboBox comboBox;
+	private JComboBox comboBox_1;
 	
-	Component rigidArea;
+	private Component rigidArea;
 	
 	//contains each character's stats
-	JTextArea textArea;
-	JTextArea textArea_1;
+	private JTextArea textArea;
+	private JTextArea textArea_1;
+	private JButton button;
 	
 	//Constructor initializes each component and arrange them using layouts
 	public StatPanel(int numChars, int numStats)
@@ -89,12 +90,22 @@ public class StatPanel extends JPanel
 		gbc_textArea_1.gridy = 2;
 		add(textArea_1, gbc_textArea_1);
 		
+		button = new JButton("New button");
+		GridBagConstraints gbc_button = new GridBagConstraints();
+		gbc_button.insets = new Insets(0, 0, 5, 5);
+		gbc_button.gridx = 5;
+		gbc_button.gridy = 4;
+		add(button, gbc_button);
+		
 		textArea.setText(stats.printChar(0));
 		textArea_1.setText(stats.printChar(1));
 
 		//listeners for the JComboBoxes
 		comboBox.addActionListener(new ComboListener());
-		comboBox.addActionListener(new ComboListener());
+		comboBox_1.addActionListener(new ComboListener());
+		
+		//listener for button
+		button.addActionListener(new ButtonListener());
 	}	
 
 	
@@ -113,8 +124,20 @@ public class StatPanel extends JPanel
 	{
 		//Directly pass the arguments to stats.attackUpdate()
 		stats.attackUpdate(character1, character2, c1Damage, c2Damage, c1Loc, c2Loc, c1Health, c2Health);
+		
+		//change the displayed stats
+		textArea.setText(stats.printChar(stats.nameToInt((String)comboBox.getSelectedItem())));
+		textArea_1.setText(stats.printChar(stats.nameToInt((String)comboBox_1.getSelectedItem())));
 	}
-
+	
+	/**
+	 * Update the statisitics.txt
+	 */
+	public void writeStats()
+	{
+		stats.updateFile();
+	}
+	
 	
 	private class ComboListener implements ActionListener
 	{
@@ -126,11 +149,24 @@ public class StatPanel extends JPanel
 			{
 				textArea.setText(stats.printChar(stats.nameToInt((String)source.getSelectedItem())));
 			}
-			else if (source == comboBox_1)
+			else if(source == comboBox_1)
 			{
 				textArea_1.setText(stats.printChar(stats.nameToInt((String)source.getSelectedItem())));
 			}
 			
+		}
+	}
+	
+	private class ButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			//checks that submit button caused event
+			JButton source = (JButton)event.getSource();
+			if(source == button)
+			{
+				updateStats(1,1,1,1,1,1,1,1);
+			}	
 		}
 	}
 }

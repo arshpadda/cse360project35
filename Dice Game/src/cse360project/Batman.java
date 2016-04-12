@@ -1,10 +1,15 @@
+package cse360project;
+
 /**
  * 
  * @author Arsh Padda
  * @version Apr 9, 2016
  */
 public class Batman extends Character{
-
+	/**
+	 * Batman Class constructor to initialize the health and the attack power of
+	 * the 3 weapons 
+	 */
 	Batman(){
 		healthBar = 100;
 		weapon1 = 10;
@@ -31,4 +36,5 @@ public class Batman extends Character{
 	double getHealth(){
 		return healthBar;
 	}
+
 }

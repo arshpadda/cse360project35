@@ -164,7 +164,9 @@ public class Stats
 	 */
 	public void attackUpdate(int character1, int character2, int c1Damage, int c2Damage, int c1Loc, int c2Loc, int c1Health, int c2Health)
 	{
-		
+		//testing, not the actual method
+		stats[5][1] = stats[5][1] + 10;
+		stats[3][0] = stats[3][0] + 5;
 	}
 	
 	/**

@@ -15,25 +15,25 @@ public abstract class Character {
 	 * Abstract method that when implemented should return the attack
 	 * value of Weapon1  
 	 */
-	abstract getWeapon1();
+	abstract int getWeapon1();
 	/**
 	 * Abstract method that when implemented should return the attack
 	 * value of Weapon2 
 	 */
-	abstract getWeapon2();
+	abstract int getWeapon2();
 	/**
 	 * Abstract method that when implemented should return the attack
 	 * value of Weapon3
 	 */
-	abstract getWeapon3();
+	abstract int getWeapon3();
 	/**
 	 * Abstract method that when implemented should update the value of
 	 * the Health of character
 	 */
-	abstract updateHealth();
+	abstract void updateHealth(double health);
 	/**
 	 * Abstract method that when implemented should return the value of
 	 * Health of the character 
 	 */
-	abstract getHealth();	
+	abstract double getHealth();	
 }

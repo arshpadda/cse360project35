@@ -24,6 +24,11 @@ public class Project extends JApplet
 		getContentPane().add(tPane);
 		setSize (APPLET_WIDTH, APPLET_HEIGHT); //set Applet size
 	}
+	
+	public void destroy()
+	{
+		statPanel.writeStats();
+	}
 }
 
 
