@@ -10,12 +10,78 @@ public class PlayPanel extends JPanel
 {
 	private JButton button1;
 	private StatPanel sPanel;
+	private final ButtonGroup buttonGroup1 = new ButtonGroup();
+	private final ButtonGroup buttonGroup2 = new ButtonGroup();
 	
 
 	//Constructor initializes components and organize them using certain layouts
 	public PlayPanel(StatPanel sPanel)
 	{
 		this.sPanel = sPanel;
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		setLayout(gridBagLayout);
+		
+		JRadioButton rdbtnWeapon = new JRadioButton("Weapon1");
+		GridBagConstraints gbc_rdbtnWeapon = new GridBagConstraints();
+		gbc_rdbtnWeapon.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnWeapon.gridx = 0;
+		gbc_rdbtnWeapon.gridy = 3;
+		add(rdbtnWeapon, gbc_rdbtnWeapon);
+		
+		JRadioButton rdbtnWeapon_3 = new JRadioButton("Weapon1");
+		GridBagConstraints gbc_rdbtnWeapon_3 = new GridBagConstraints();
+		gbc_rdbtnWeapon_3.insets = new Insets(0, 0, 5, 0);
+		gbc_rdbtnWeapon_3.gridx = 7;
+		gbc_rdbtnWeapon_3.gridy = 3;
+		add(rdbtnWeapon_3, gbc_rdbtnWeapon_3);
+		
+		JRadioButton rdbtnWeapon_1 = new JRadioButton("Weapon2");
+		GridBagConstraints gbc_rdbtnWeapon_1 = new GridBagConstraints();
+		gbc_rdbtnWeapon_1.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnWeapon_1.gridx = 0;
+		gbc_rdbtnWeapon_1.gridy = 4;
+		add(rdbtnWeapon_1, gbc_rdbtnWeapon_1);
+		
+		JRadioButton rdbtnWeapon_4 = new JRadioButton("Weapon2");
+		GridBagConstraints gbc_rdbtnWeapon_4 = new GridBagConstraints();
+		gbc_rdbtnWeapon_4.insets = new Insets(0, 0, 5, 0);
+		gbc_rdbtnWeapon_4.gridx = 7;
+		gbc_rdbtnWeapon_4.gridy = 4;
+		add(rdbtnWeapon_4, gbc_rdbtnWeapon_4);
+		
+		JRadioButton rdbtnWeapon_2 = new JRadioButton("Weapon3");
+		GridBagConstraints gbc_rdbtnWeapon_2 = new GridBagConstraints();
+		gbc_rdbtnWeapon_2.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnWeapon_2.gridx = 0;
+		gbc_rdbtnWeapon_2.gridy = 5;
+		add(rdbtnWeapon_2, gbc_rdbtnWeapon_2);
+		
+		JRadioButton rdbtnWeapon_5 = new JRadioButton("Weapon3");
+		GridBagConstraints gbc_rdbtnWeapon_5 = new GridBagConstraints();
+		gbc_rdbtnWeapon_5.insets = new Insets(0, 0, 5, 0);
+		gbc_rdbtnWeapon_5.gridx = 7;
+		gbc_rdbtnWeapon_5.gridy = 5;
+		add(rdbtnWeapon_5, gbc_rdbtnWeapon_5);
+		
+		JButton btnAttack = new JButton("Attack");
+		GridBagConstraints gbc_btnAttack = new GridBagConstraints();
+		gbc_btnAttack.insets = new Insets(0, 0, 0, 5);
+		gbc_btnAttack.gridx = 4;
+		gbc_btnAttack.gridy = 8;
+		add(btnAttack, gbc_btnAttack);
+		
+		buttonGroup1.add(rdbtnWeapon);
+		buttonGroup1.add(rdbtnWeapon_1);
+		buttonGroup1.add(rdbtnWeapon_2);
+		
+		buttonGroup2.add(rdbtnWeapon_3);
+		buttonGroup2.add(rdbtnWeapon_4);
+		buttonGroup2.add(rdbtnWeapon_5);
+
 		
 		//listener for the button
 	    //button1.addActionListener(new ButtonListener());
