@@ -13,7 +13,7 @@ public class PlayPanel extends JPanel
 	private final ButtonGroup buttonGroup1 = new ButtonGroup();
 	private final ButtonGroup buttonGroup2 = new ButtonGroup();
 	
-
+	//Initialize the character object here
 	//Constructor initializes components and organize them using certain layouts
 	public PlayPanel(StatPanel sPanel)
 	{
@@ -21,9 +21,41 @@ public class PlayPanel extends JPanel
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
+		
+		JProgressBar progressBar = new JProgressBar();
+		GridBagConstraints gbc_progressBar = new GridBagConstraints();
+		gbc_progressBar.insets = new Insets(0, 0, 5, 5);
+		gbc_progressBar.gridx = 0;
+		gbc_progressBar.gridy = 1;
+		add(progressBar, gbc_progressBar);
+		//Will change according to the health of the Player 
+		progressBar.setValue(100);
+		
+		JProgressBar progressBar_1 = new JProgressBar();
+		GridBagConstraints gbc_progressBar_1 = new GridBagConstraints();
+		gbc_progressBar_1.insets = new Insets(0, 0, 5, 0);
+		gbc_progressBar_1.gridx = 7;
+		gbc_progressBar_1.gridy = 1;
+		add(progressBar_1, gbc_progressBar_1);
+		//Will change according to the health of the Player
+		progressBar_1.setValue(100);
+		
+		Label label = new Label("Character 1 Name");
+		GridBagConstraints gbc_label = new GridBagConstraints();
+		gbc_label.insets = new Insets(0, 0, 5, 5);
+		gbc_label.gridx = 0;
+		gbc_label.gridy = 2;
+		add(label, gbc_label);
+		
+		Label label_1 = new Label("Character 2 Name");
+		GridBagConstraints gbc_label_1 = new GridBagConstraints();
+		gbc_label_1.insets = new Insets(0, 0, 5, 0);
+		gbc_label_1.gridx = 7;
+		gbc_label_1.gridy = 2;
+		add(label_1, gbc_label_1);
 		
 		JRadioButton rdbtnWeapon = new JRadioButton("Weapon1");
 		GridBagConstraints gbc_rdbtnWeapon = new GridBagConstraints();
@@ -89,6 +121,7 @@ public class PlayPanel extends JPanel
 
  
 	//ButtonListener is a listener class that listens to
+	//Implement the class object of the two character here
 	private class ButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
