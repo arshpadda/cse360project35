@@ -1,10 +1,10 @@
 package cse360project;
 
 /**
- * 
- * @author Arsh Padda
- * @version Apr 9, 2016
+ * @author Team35
+ * @version April 15, 2016
  */
+
 public class Batman extends Character{
 	/**
 	 * Batman Class constructor to initialize the health and the attack power of
