@@ -6,7 +6,7 @@ package cse360project;
  * @version Apr 6,2016
  */
 public abstract class Character {
-	double healthBar;
+	int healthBar;
 	int weapon1;
 	int weapon2;
 	int weapon3;
@@ -30,10 +30,10 @@ public abstract class Character {
 	 * Abstract method that when implemented should update the value of
 	 * the Health of character
 	 */
-	abstract void updateHealth(double health);
+	abstract void updateHealth(int health);
 	/**
 	 * Abstract method that when implemented should return the value of
 	 * Health of the character 
 	 */
-	abstract double getHealth();	
+	abstract int getHealth();	
 }

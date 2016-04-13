@@ -26,11 +26,11 @@ public class Superman extends Character{
 		return weapon3;
 	}
 	
-	void updateHealth(double health){
+	void updateHealth(int health){
 		healthBar = health;
 	}
 	
-	double getHealth(){
+	int getHealth(){
 		return healthBar;
 	}
 }

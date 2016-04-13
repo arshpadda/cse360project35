@@ -12,7 +12,8 @@ public class PlayPanel extends JPanel
 	private StatPanel sPanel;
 	private final ButtonGroup buttonGroup1 = new ButtonGroup();
 	private final ButtonGroup buttonGroup2 = new ButtonGroup();
-	
+	Superman Sup;
+	Batman Bat;
 	//Initialize the character object here
 	//Constructor initializes components and organize them using certain layouts
 	public PlayPanel(StatPanel sPanel)
@@ -25,6 +26,9 @@ public class PlayPanel extends JPanel
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
+		Sup = new Superman();
+		Bat = new Batman();
+		
 		JProgressBar progressBar = new JProgressBar();
 		GridBagConstraints gbc_progressBar = new GridBagConstraints();
 		gbc_progressBar.insets = new Insets(0, 0, 5, 5);
@@ -32,7 +36,7 @@ public class PlayPanel extends JPanel
 		gbc_progressBar.gridy = 1;
 		add(progressBar, gbc_progressBar);
 		//Will change according to the health of the Player 
-		progressBar.setValue(100);
+		progressBar.setValue(Bat.getHealth());
 		
 		JProgressBar progressBar_1 = new JProgressBar();
 		GridBagConstraints gbc_progressBar_1 = new GridBagConstraints();
@@ -41,7 +45,7 @@ public class PlayPanel extends JPanel
 		gbc_progressBar_1.gridy = 1;
 		add(progressBar_1, gbc_progressBar_1);
 		//Will change according to the health of the Player
-		progressBar_1.setValue(100);
+		progressBar_1.setValue(Sup.getHealth());
 		
 		Label label = new Label("Batman");
 		GridBagConstraints gbc_label = new GridBagConstraints();
