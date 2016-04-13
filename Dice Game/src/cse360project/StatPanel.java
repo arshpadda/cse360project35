@@ -90,7 +90,7 @@ public class StatPanel extends JPanel
 		gbc_textArea_1.gridy = 2;
 		add(textArea_1, gbc_textArea_1);
 		
-		button = new JButton("New button");
+		button = new JButton("Test");
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 5);
 		gbc_button.gridx = 5;
@@ -115,15 +115,17 @@ public class StatPanel extends JPanel
 	 * @param character2 int representing the second character
 	 * @param c1Damage damage dealt by character1, taken by character2
 	 * @param c2Damage damage dealt by character2, taken by character1
-	 * @param c1Loc body part hit by character1 on character2
-	 * @param c2Loc body part hit by character2 on character1
+	 * @param c1Loc body part hit by character1 on character2, give the dice number
+	 * @param c2Loc body part hit by character2 on character1, give the dice number
 	 * @param c1Health character1's health before the attack
 	 * @param c2Health character2's health before the attack
+	 * @param c1Crit character1 critical, 0 = no crit, 1 = crit
+	 * @param c2Crit character2 critical, 0 = no crit, 1 = crit
 	 */
-	public void updateStats(int character1, int character2, int c1Damage, int c2Damage, int c1Loc, int c2Loc, int c1Health, int c2Health)
+	public void updateStats(int character1, int character2, int c1Damage, int c2Damage, int c1Loc, int c2Loc, int c1Health, int c2Health, int c1Crit, int c2Crit)
 	{
 		//Directly pass the arguments to stats.attackUpdate()
-		stats.attackUpdate(character1, character2, c1Damage, c2Damage, c1Loc, c2Loc, c1Health, c2Health);
+		stats.attackUpdate(character1, character2, c1Damage, c2Damage, c1Loc, c2Loc, c1Health, c2Health, c1Crit, c2Crit);
 		
 		//change the displayed stats
 		textArea.setText(stats.printChar(stats.nameToInt((String)comboBox.getSelectedItem())));
@@ -165,7 +167,7 @@ public class StatPanel extends JPanel
 			JButton source = (JButton)event.getSource();
 			if(source == button)
 			{
-				updateStats(1,1,1,1,1,1,1,1);
+				updateStats(0,1,1,1,1,1,1,1,1,1);
 			}	
 		}
 	}

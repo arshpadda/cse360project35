@@ -157,16 +157,70 @@ public class Stats
 	 * @param character2 int representing the second character
 	 * @param c1Damage damage dealt by character1, taken by character2
 	 * @param c2Damage damage dealt by character2, taken by character1
-	 * @param c1Loc body part hit by character1 on character2
-	 * @param c2Loc body part hit by character2 on character1
+	 * @param c1Loc body part hit by character1 on character2, give the dice number
+	 * @param c2Loc body part hit by character2 on character1, give the dice number
 	 * @param c1Health character1's health before the attack
 	 * @param c2Health character2's health before the attack
+	 * @param c1Crit character1 critical, 0 = no crit, 1 = crit
+	 * @param c2Crit character2 critical, 0 = no crit, 1 = crit
 	 */
-	public void attackUpdate(int character1, int character2, int c1Damage, int c2Damage, int c1Loc, int c2Loc, int c1Health, int c2Health)
+	public void attackUpdate(int character1, int character2, int c1Damage, int c2Damage, int c1Loc, int c2Loc, int c1Health, int c2Health, int c1Crit, int c2Crit)
 	{
-		//testing, not the actual method
-		stats[5][1] = stats[5][1] + 10;
-		stats[3][0] = stats[3][0] + 5;
+		//first convert the dice number into 0, 1  or 2
+		//needs implementation
+		
+		//first check for the end of the fight, wins losses and draws
+		//c1 loses
+		if(c1Health <= c2Damage)
+		{
+			//c2 loses also, draw
+			if(c2Health <= c1Damage)
+			{
+				stats[2][character1]++;
+				stats[2][character2]++;
+			}
+			//c2 wins
+			else
+			{
+				stats[0][character2]++;
+				stats[1][character1]++;
+			}
+		}
+		//c1 wins
+		else if(c2Health <= c1Damage)
+		{
+			stats[0][character1]++;
+			stats[1][character2]++;
+		}
+		
+		//Next, turns damageDone tempDamageDone damageTaken and tempDamageTaken
+		//turns
+		stats[3][character1]++;
+		stats[3][character2]++;
+		
+		//damageDone
+		stats[4][character1] = stats[4][character1] + c1Damage;
+		stats[4][character2] = stats[4][character2] + c2Damage;
+		//tempDamageDone
+		tempDamageDone[character1] = tempDamageDone[character1] + c1Damage;
+		tempDamageDone[character2] = tempDamageDone[character2] + c2Damage;
+		
+		//damageTaken
+		stats[5][character1] = stats[5][character1] + c2Damage;
+		stats[5][character2] = stats[5][character2] + c1Damage;
+		//tempDamageTaken
+		tempDamageTaken[character1] = tempDamageTaken[character1] + c2Damage;
+		tempDamageTaken[character2] = tempDamageTaken[character2] + c1Damage;
+		
+		//Next, hitHead hitChest and hitLegs
+		//the location + 6 gives the right stat to increment
+		stats[c1Loc + 6][character1]++;
+		stats[c2Loc + 6][character2]++;
+		
+		//criticalHits, needs implementation
+		
+		//mostTurns, needs implementation
+		
 	}
 	
 	/**
