@@ -12,6 +12,7 @@ public class PlayPanel extends JPanel
 	private StatPanel sPanel;
 	private final ButtonGroup buttonGroup1 = new ButtonGroup();
 	private final ButtonGroup buttonGroup2 = new ButtonGroup();
+	//Class Object
 	Superman Sup;
 	Batman Bat;
 	//Initialize the character object here
