@@ -1,6 +1,10 @@
-//CSE360
-
 package cse360project;
+
+/**
+ * @author Team35
+ * @version April 15, 2016
+ */
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
