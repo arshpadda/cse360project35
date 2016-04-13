@@ -2,7 +2,7 @@ package cse360project;
 
 /**
  * 
- * @author Arsh Padda
+ * @author Team35
  * @version Apr 9, 2016
  */
 public class Superman extends Character{
