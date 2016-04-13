@@ -48,7 +48,7 @@ public class Stats
 	
 	/**
 	 * Constructor for Stats, reads the statistics file
-	 * @param numChars number of characters to read stats  for
+	 * @param numChars number of characters to read stats for
 	 * @param numStats number of statistics to be read
 	 */
 	public Stats(int numChars, int numStats)
@@ -74,7 +74,6 @@ public class Stats
 		this.numStats = numStats;
 		
 		//file operations to open the file, inside a try block in case the file is not found
-		//needs testing for cases where the file is not found, or format doesn't match expected
 		try
 		{
 			//create the File
@@ -164,10 +163,10 @@ public class Stats
 	 * @param c2Loc body part hit by character2 on character1, give the dice number
 	 * @param c1Health character1's health before the attack
 	 * @param c2Health character2's health before the attack
-	 * @param c1Crit character1 critical, 0 = no crit, 1 = crit
-	 * @param c2Crit character2 critical, 0 = no crit, 1 = crit
+	 * @param c1Crit whether character1 crit, boolean
+	 * @param c2Crit whether character2 crit, boolean
 	 */
-	public void attackUpdate(int character1, int character2, int c1Damage, int c2Damage, int c1Loc, int c2Loc, int c1Health, int c2Health, int c1Crit, int c2Crit)
+	public void attackUpdate(int character1, int character2, int c1Damage, int c2Damage, int c1Loc, int c2Loc, int c1Health, int c2Health, boolean c1Crit, boolean c2Crit)
 	{
 		//first convert the dice number into 0, 1  or 2
 		//needs implementation
@@ -221,9 +220,22 @@ public class Stats
 		stats[c2Loc + 6][character2]++;
 		
 		//criticalHits, needs implementation
-		
-		//mostTurns, needs implementation
-		
+		//character1 critical hit
+		if(c1Crit)
+			stats[9][character1]++;
+			
+		//character2 critical hit
+		if(c2Crit)
+			stats[9][character2]++;
+			
+	}
+	
+	public void mostTurns(int character1, int character2, int turns)
+	{
+		if(turns > stats[10][character1])
+			stats[10][character1] = turns;
+		if(turns > stats[10][character2])
+			stats[10][character2] = turns;
 	}
 	
 	/**
