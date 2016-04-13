@@ -43,14 +43,14 @@ public class PlayPanel extends JPanel
 		//Will change according to the health of the Player
 		progressBar_1.setValue(100);
 		
-		Label label = new Label("Character 1 Name");
+		Label label = new Label("Batman");
 		GridBagConstraints gbc_label = new GridBagConstraints();
 		gbc_label.insets = new Insets(0, 0, 5, 5);
 		gbc_label.gridx = 0;
 		gbc_label.gridy = 2;
 		add(label, gbc_label);
 		
-		Label label_1 = new Label("Character 2 Name");
+		Label label_1 = new Label("Superman");
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
 		gbc_label_1.insets = new Insets(0, 0, 5, 0);
 		gbc_label_1.gridx = 7;
