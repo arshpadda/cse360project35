@@ -15,6 +15,19 @@ public class PlayPanel extends JPanel
 	//Class Object
 	Superman Sup;
 	Batman Bat;
+	
+	JProgressBar progressBar;
+	JProgressBar progressBar_1;
+	
+	Label label_1;
+	Label label;
+	
+	JRadioButton rdbtnWeapon;
+	JRadioButton rdbtnWeapon_3;
+	JRadioButton rdbtnWeapon_1;
+	JRadioButton rdbtnWeapon_4;
+	JRadioButton rdbtnWeapon_2;
+	JRadioButton rdbtnWeapon_5;
 	//Initialize the character object here
 	//Constructor initializes components and organize them using certain layouts
 	public PlayPanel(StatPanel sPanel)
@@ -30,7 +43,7 @@ public class PlayPanel extends JPanel
 		Sup = new Superman();
 		Bat = new Batman();
 		
-		JProgressBar progressBar = new JProgressBar();
+		progressBar = new JProgressBar();
 		GridBagConstraints gbc_progressBar = new GridBagConstraints();
 		gbc_progressBar.insets = new Insets(0, 0, 5, 5);
 		gbc_progressBar.gridx = 0;
@@ -39,7 +52,7 @@ public class PlayPanel extends JPanel
 		//Will change according to the health of the Player 
 		progressBar.setValue(Bat.getHealth());
 		
-		JProgressBar progressBar_1 = new JProgressBar();
+		progressBar_1 = new JProgressBar();
 		GridBagConstraints gbc_progressBar_1 = new GridBagConstraints();
 		gbc_progressBar_1.insets = new Insets(0, 0, 5, 0);
 		gbc_progressBar_1.gridx = 7;
@@ -62,35 +75,35 @@ public class PlayPanel extends JPanel
 		gbc_label_1.gridy = 2;
 		add(label_1, gbc_label_1);
 		
-		JRadioButton rdbtnWeapon = new JRadioButton("Weapon1");
+		JRadioButton rdbtnWeapon = new JRadioButton("BatWeapon1");
 		GridBagConstraints gbc_rdbtnWeapon = new GridBagConstraints();
 		gbc_rdbtnWeapon.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnWeapon.gridx = 0;
 		gbc_rdbtnWeapon.gridy = 3;
 		add(rdbtnWeapon, gbc_rdbtnWeapon);
 		
-		JRadioButton rdbtnWeapon_3 = new JRadioButton("Weapon1");
+		JRadioButton rdbtnWeapon_3 = new JRadioButton("SupWeapon1");
 		GridBagConstraints gbc_rdbtnWeapon_3 = new GridBagConstraints();
 		gbc_rdbtnWeapon_3.insets = new Insets(0, 0, 5, 0);
 		gbc_rdbtnWeapon_3.gridx = 7;
 		gbc_rdbtnWeapon_3.gridy = 3;
 		add(rdbtnWeapon_3, gbc_rdbtnWeapon_3);
 		
-		JRadioButton rdbtnWeapon_1 = new JRadioButton("Weapon2");
+		JRadioButton rdbtnWeapon_1 = new JRadioButton("BatWeapon2");
 		GridBagConstraints gbc_rdbtnWeapon_1 = new GridBagConstraints();
 		gbc_rdbtnWeapon_1.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnWeapon_1.gridx = 0;
 		gbc_rdbtnWeapon_1.gridy = 4;
 		add(rdbtnWeapon_1, gbc_rdbtnWeapon_1);
 		
-		JRadioButton rdbtnWeapon_4 = new JRadioButton("Weapon2");
+		JRadioButton rdbtnWeapon_4 = new JRadioButton("SupWeapon2");
 		GridBagConstraints gbc_rdbtnWeapon_4 = new GridBagConstraints();
 		gbc_rdbtnWeapon_4.insets = new Insets(0, 0, 5, 0);
 		gbc_rdbtnWeapon_4.gridx = 7;
 		gbc_rdbtnWeapon_4.gridy = 4;
 		add(rdbtnWeapon_4, gbc_rdbtnWeapon_4);
 		
-		JRadioButton rdbtnWeapon_2 = new JRadioButton("Weapon3");
+		JRadioButton rdbtnWeapon_2 = new JRadioButton("BatWeapon3");
 		GridBagConstraints gbc_rdbtnWeapon_2 = new GridBagConstraints();
 		gbc_rdbtnWeapon_2.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnWeapon_2.gridx = 0;
@@ -135,6 +148,7 @@ public class PlayPanel extends JPanel
 			Object source = event.getSource();
 			if(source == button1)
 			{
+				//String selectedRadioButtonText = getSelectedRadioButton(buttonGroup1).getText();
 				
 			}
 		}
