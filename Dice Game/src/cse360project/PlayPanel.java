@@ -170,7 +170,36 @@ public class PlayPanel extends JPanel
 				//getActionCommand to get a string for the weapon, parseInt to convert to int
 				int batmanWeapon = Integer.parseInt(buttonGroup1.getSelection().getActionCommand());
 				int supermanWeapon = Integer.parseInt(buttonGroup2.getSelection().getActionCommand());
+				int batAttack;
+				int supAttack;
+				if (batmanWeapon == 1){
+					batAttack = Bat.getWeapon1();
+				}
+				else if (batmanWeapon == 2){
+					batAttack = Bat.getWeapon2();
+				}
+				else{
+					batAttack = Bat.getWeapon3();
+				}
 				
+				if (supermanWeapon == 1){
+					supAttack = Sup.getWeapon1();
+				}
+				else if (supermanWeapon == 2){
+					supAttack = Sup.getWeapon2();
+				}
+				else{
+					supAttack = Sup.getWeapon3();
+				}
+				
+				int supHealth = Sup.getHealth() - batAttack;
+				int batHealth = Bat.getHealth() - supAttack;
+				
+				Sup.updateHealth(supHealth);
+				Bat.updateHealth(batHealth);
+				
+				progressBar.setValue(batHealth);
+				progressBar_1.setValue(supHealth);
 				
 			}
 		}
