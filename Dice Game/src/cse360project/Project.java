@@ -8,7 +8,7 @@ package cse360project;
 
 import javax.swing.*;
 import java.util.*;
-
+import java.awt.*;
 public class Project extends JApplet
 {
 	private int APPLET_WIDTH = 850, APPLET_HEIGHT = 450;
@@ -28,6 +28,11 @@ public class Project extends JApplet
 		
 		getContentPane().add(tPane);
 		setSize (APPLET_WIDTH, APPLET_HEIGHT); //set Applet size
+	}
+	
+	public void paint(Graphics g){
+		
+		
 	}
 	
 	public void destroy()
