@@ -30,10 +30,6 @@ public class Project extends JApplet
 		setSize (APPLET_WIDTH, APPLET_HEIGHT); //set Applet size
 	}
 	
-	public void paint(Graphics g){
-		
-		
-	}
 	
 	public void destroy()
 	{

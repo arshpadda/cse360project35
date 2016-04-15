@@ -53,6 +53,8 @@ public class PlayPanel extends JPanel
 	private int batDice;
 	private int supDice;
 	
+	private int batAttackDice;
+	
 	private Dice die;
 	//Initialize the character object here
 	//Constructor initializes components and organize them using certain layouts
@@ -259,12 +261,19 @@ public class PlayPanel extends JPanel
 				//getActionCommand to get a string for the weapon, parseInt to convert to int
 				int batmanWeapon = Integer.parseInt(buttonGroup1.getSelection().getActionCommand());
 				int supermanWeapon = Integer.parseInt(buttonGroup2.getSelection().getActionCommand());
-				//Call the Dice to have a body part attack
-				
+				//Get the area attacked by the Dice
+				int batAreaAttacked = supermanWeapon;
+				int supAreaAttacked = batmanWeapon;
+
+				int batAreaDefended = Integer.parseInt(buttonGroup3.getSelection().getActionCommand());
+				int supAreaDefended = Integer.parseInt(buttonGroup4.getSelection().getActionCommand());
 				int batAttack;
 				int supAttack;
 				
-				//Get Batman Weapon Choice 
+				
+				
+				
+				//Get Batman Weapon Choice
 				if (batmanWeapon == 1){
 					batAttack = Bat.getWeapon1();
 				}
@@ -275,8 +284,14 @@ public class PlayPanel extends JPanel
 					batAttack = Bat.getWeapon3();
 				}
 				
-				batDice = die.getDie1();
+				batDice = die.getDie1() + die.getDie1();
+				
+				if(batDice > 11){
+					batAttack = batAttack + (int)(batAttack*0.2);
+				}
+				
 				System.out.println(batDice);
+				
 				//Get Superman Weapon Choice
 				if (supermanWeapon == 1){
 					supAttack = Sup.getWeapon1();
@@ -288,9 +303,18 @@ public class PlayPanel extends JPanel
 					supAttack = Sup.getWeapon3();
 				}
 				
-				supDice = die.getDie1();
+				supDice = die.getDie1() + die.getDie1();
 				System.out.println(supDice);
+				if(supDice > 11){
+					supAttack = (supAttack + (int)(supAttack*0.2));
+				}
 				
+				if (batAreaAttacked == batAreaDefended){
+					supAttack = 0;
+				}
+				if(supAreaAttacked == supAreaDefended){
+					batAttack = 0;
+				}
 				int supHealth = Sup.getHealth() - batAttack;
 				int batHealth = Bat.getHealth() - supAttack;
 				
