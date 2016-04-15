@@ -36,10 +36,14 @@ public class PlayPanel extends JPanel
 	private JRadioButton rdbtnWeapon_4;
 	private JRadioButton rdbtnWeapon_2;
 	private JRadioButton rdbtnWeapon_5;
+	
+	private int turn;
 	//Initialize the character object here
 	//Constructor initializes components and organize them using certain layouts
 	public PlayPanel(StatPanel sPanel)
 	{
+		turn = 0;
+		
 		this.sPanel = sPanel;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -166,6 +170,8 @@ public class PlayPanel extends JPanel
 			if(source == btnAttack)
 			{
 				//String selectedRadioButtonText = getSelectedRadioButton(buttonGroup1).getText();
+				//increment turn counter
+				turn++;
 				
 				//getActionCommand to get a string for the weapon, parseInt to convert to int
 				int batmanWeapon = Integer.parseInt(buttonGroup1.getSelection().getActionCommand());
@@ -198,9 +204,22 @@ public class PlayPanel extends JPanel
 				Sup.updateHealth(supHealth);
 				Bat.updateHealth(batHealth);
 				
+				
 				progressBar.setValue(batHealth);
 				progressBar_1.setValue(supHealth);
 				
+				//call sPanel.updateStats() around here
+				
+				
+				if(batHealth <= 0 || supHealth <= 0)
+				{
+					Sup.updateHealth(100);
+					Bat.updateHealth(100);
+					progressBar.setValue(100);
+					progressBar_1.setValue(100);
+					sPanel.updateMostTurns(0,1,turn);
+				}
+			
 			}
 		}
 	} 
