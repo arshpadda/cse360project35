@@ -255,7 +255,7 @@ public class PlayPanel extends JPanel
 		{
 			//checks the source of the event is the button being pressed
 			Object source = event.getSource();
-			if(source == btnAttack)
+			if(source == btnAttack && progressBar_Bat.getValue() > 0 && progressBar_Sup.getValue() > 0)
 			{
 				//String selectedRadioButtonText = getSelectedRadioButton(buttonGroup1).getText();
 				//increment turn counter
@@ -294,7 +294,7 @@ public class PlayPanel extends JPanel
 				}
 				
 				supDice = die.getDie1();
-				System.out.println(supDice);
+				System.out.println(supDice + "\n");
 				
 				int supHealth = Sup.getHealth() - batAttack;
 				int batHealth = Bat.getHealth() - supAttack;
@@ -313,11 +313,14 @@ public class PlayPanel extends JPanel
 				{
 					Sup.updateHealth(100);
 					Bat.updateHealth(100);
-					progressBar_Bat.setValue(100);
-					progressBar_Sup.setValue(100);
 					sPanel.updateMostTurns(0,1,turn);
 				}
 			
+			}
+			else
+			{
+				progressBar_Bat.setValue(100);
+				progressBar_Sup.setValue(100);
 			}
 		}
 	} 
