@@ -1,6 +1,10 @@
-//CSE360
-
 package cse360project;
+
+/**
+ * @author Team35
+ * @version April 15, 2016
+ */
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -90,7 +94,7 @@ public class StatPanel extends JPanel
 		gbc_textArea_1.gridy = 2;
 		add(textArea_1, gbc_textArea_1);
 		
-		button = new JButton("New button");
+		button = new JButton("Test");
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 5);
 		gbc_button.gridx = 5;
@@ -115,20 +119,46 @@ public class StatPanel extends JPanel
 	 * @param character2 int representing the second character
 	 * @param c1Damage damage dealt by character1, taken by character2
 	 * @param c2Damage damage dealt by character2, taken by character1
-	 * @param c1Loc body part hit by character1 on character2
-	 * @param c2Loc body part hit by character2 on character1
+	 * @param c1Loc body part hit by character1 on character2, give the dice number
+	 * @param c2Loc body part hit by character2 on character1, give the dice number
 	 * @param c1Health character1's health before the attack
 	 * @param c2Health character2's health before the attack
+	 * @param c1Crit whether character1 crit, boolean
+	 * @param c2Crit whether character2 crit, boolean
 	 */
-	public void updateStats(int character1, int character2, int c1Damage, int c2Damage, int c1Loc, int c2Loc, int c1Health, int c2Health)
+	public void updateStats(int character1, int character2, int c1Damage, int c2Damage, int c1Loc, int c2Loc, int c1Health, int c2Health, boolean c1Crit, boolean c2Crit)
 	{
 		//Directly pass the arguments to stats.attackUpdate()
-		stats.attackUpdate(character1, character2, c1Damage, c2Damage, c1Loc, c2Loc, c1Health, c2Health);
+		stats.attackUpdate(character1, character2, c1Damage, c2Damage, c1Loc, c2Loc, c1Health, c2Health, c1Crit, c2Crit);
 		
 		//change the displayed stats
+		updateDisplay();
+	}
+	
+	/**
+	 * Call at the end of each match, with total turns and the int for each character
+	 * @param character1 integer representing first character
+	 * @param character2 integer representing second character
+	 * @param turns total turns taken in this match
+	 */
+	public void updateMostTurns(int character1, int character2, int turns)
+	{
+		//pass arguments to the stats class
+		stats.mostTurns(character1, character2, turns);
+		
+		//change the displayed stats
+		updateDisplay();
+	}
+	
+	/**
+	 * Call internally to update both text areas
+	 */
+	private void updateDisplay()
+	{
 		textArea.setText(stats.printChar(stats.nameToInt((String)comboBox.getSelectedItem())));
 		textArea_1.setText(stats.printChar(stats.nameToInt((String)comboBox_1.getSelectedItem())));
 	}
+	
 	
 	/**
 	 * Update the statisitics.txt
@@ -165,7 +195,7 @@ public class StatPanel extends JPanel
 			JButton source = (JButton)event.getSource();
 			if(source == button)
 			{
-				updateStats(1,1,1,1,1,1,1,1);
+				updateStats(0,1,1,1,1,1,1,1,false,false);
 			}	
 		}
 	}

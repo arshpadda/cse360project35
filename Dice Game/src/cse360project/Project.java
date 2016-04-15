@@ -1,6 +1,11 @@
-//CSE360
-
 package cse360project;
+
+/**
+ * @author Team35
+ * @version April 15, 2016
+ */
+
+
 import javax.swing.*;
 import java.util.*;
 
