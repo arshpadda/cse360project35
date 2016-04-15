@@ -1,6 +1,7 @@
 package cse360project;
 
 /**
+ * Abstract class for implementing the character of the game
  * @author Team35
  * @version April 15, 2016
  */

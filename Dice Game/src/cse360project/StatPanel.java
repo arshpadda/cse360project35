@@ -94,12 +94,14 @@ public class StatPanel extends JPanel
 		gbc_textArea_1.gridy = 2;
 		add(textArea_1, gbc_textArea_1);
 		
+		/*
 		button = new JButton("Test");
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 5);
 		gbc_button.gridx = 5;
 		gbc_button.gridy = 4;
 		add(button, gbc_button);
+		*/
 		
 		textArea.setText(stats.printChar(0));
 		textArea_1.setText(stats.printChar(1));
@@ -109,7 +111,7 @@ public class StatPanel extends JPanel
 		comboBox_1.addActionListener(new ComboListener());
 		
 		//listener for button
-		button.addActionListener(new ButtonListener());
+		//button.addActionListener(new ButtonListener());
 	}	
 
 	
@@ -187,7 +189,7 @@ public class StatPanel extends JPanel
 		}
 	}
 	
-	private class ButtonListener implements ActionListener
+	/*private class ButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
 		{
@@ -195,8 +197,8 @@ public class StatPanel extends JPanel
 			JButton source = (JButton)event.getSource();
 			if(source == button)
 			{
-				updateStats(0,1,1,1,1,1,1,1,false,false);
 			}	
 		}
 	}
+	*/
 }

@@ -58,6 +58,8 @@ public class PlayPanel extends JPanel
 	private int batAttackDice;
 	
 	private Dice die;
+	
+	private JLabel lblNewLabel;
 	//Initialize the character object here
 	//Constructor initializes components and organize them using certain layouts
 	public PlayPanel(StatPanel sPanel)
@@ -68,12 +70,21 @@ public class PlayPanel extends JPanel
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		Sup = new Superman();
 		Bat = new Batman();
+		
+		lblNewLabel = new JLabel("");
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.gridwidth = 6;
+		gbc_lblNewLabel.gridheight = 2;
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.gridx = 1;
+		gbc_lblNewLabel.gridy = 1;
+		add(lblNewLabel, gbc_lblNewLabel);
 		
 				
 		progressBar_Bat = new JProgressBar();
@@ -331,24 +342,34 @@ public class PlayPanel extends JPanel
 				Bat.updateHealth(batHealth);
 				
 				// if condition to stop the game
-				
+				System.out.println("BatHealth : "+batHealth);
+				System.out.println("SupHealth : "+supHealth);
+
 				progressBar_Bat.setValue(batHealth);
 				progressBar_Sup.setValue(supHealth);
 				
 				//call sPanel.updateStats() around here
-				
-				
-				if(batHealth <= 0 || supHealth <= 0)
-				{
-					Sup.updateHealth(100);
-					Bat.updateHealth(100);
-					sPanel.updateMostTurns(0,1,turn);
+				if(batHealth <= 0 && supHealth <=0){
+					System.out.println("Its a draw");
+					lblNewLabel.setText("Draw");
+				}
+				else if(batHealth <= 0 && supHealth > 0){
+					System.out.print("Superman Wins");
+					lblNewLabel.setText("Superman Wins");
+				}
+				else if(batHealth >0 && supHealth <=0){
+					System.out.print("Batman Wins");
+					lblNewLabel.setText("Batman Wins");
 				}
 				
-			
 			}
+			//Reached when reset occurs
 			else
 			{
+				lblNewLabel.setText("");
+				Sup.updateHealth(100);
+				Bat.updateHealth(100);
+				sPanel.updateMostTurns(0,1,turn);
 				progressBar_Bat.setValue(100);
 				progressBar_Sup.setValue(100);
 			}
