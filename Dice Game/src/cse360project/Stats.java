@@ -219,7 +219,6 @@ public class Stats
 		stats[c1Loc + 6][character1]++;
 		stats[c2Loc + 6][character2]++;
 		
-		//criticalHits, needs implementation
 		//character1 critical hit
 		if(c1Crit)
 			stats[9][character1]++;
