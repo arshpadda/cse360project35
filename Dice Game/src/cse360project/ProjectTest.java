@@ -67,7 +67,7 @@ public class ProjectTest {
 	
 	@Test
 	public void testSupermanUpdateHealth() {
-		batTest.updateHealth(75);
+		superTest.updateHealth(75);
 		assertEquals(superTest.getHealth(), 75);
 	}
 }
