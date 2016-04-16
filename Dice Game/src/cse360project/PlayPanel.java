@@ -11,11 +11,18 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
-
+/**
+ * The Play panel is a component of the applet which has the main working user interface of the 
+ * game play. The user can see his Health and choose between the different options of Attack and
+ * Defend. 
+ * @author Team35
+ *
+ */
 public class PlayPanel extends JPanel
 {
-	private JButton button1;
+	//Stat panel object to collect, store and update the stats
 	private StatPanel sPanel;
+	//Button group has different button to club the radio button together
 	private final ButtonGroup buttonGroup1 = new ButtonGroup();
 	private final ButtonGroup buttonGroup2 = new ButtonGroup();
 	private final ButtonGroup buttonGroup3 = new ButtonGroup();
@@ -25,14 +32,18 @@ public class PlayPanel extends JPanel
 	private Superman Sup;
 	private Batman Bat;
 	
+	//Progress Bar to show the health of the character
 	private JProgressBar progressBar_Bat;
 	private JProgressBar progressBar_Sup;
 	
+	//Label to show name of the Character
 	private Label label_1;
 	private Label label;
 	
+	//Button to Attack each other when clicked 
 	private JButton btnAttack;
 	
+	//Radio button for different weapon of character
 	private JRadioButton rdbtnWeapon;
 	private JRadioButton rdbtnWeapon_3;
 	private JRadioButton rdbtnWeapon_1;
@@ -40,24 +51,33 @@ public class PlayPanel extends JPanel
 	private JRadioButton rdbtnWeapon_2;
 	private JRadioButton rdbtnWeapon_5;
 	
+	//Turn to keep count of number of turn
 	private int turn;
 	
+	//Label to show the Block Option
 	private Label label_2;
+	
+	//Radio button to show the area that can be blocked
 	private JRadioButton rdbtnHead;
 	private JRadioButton rdbtnTorso;
 	private JRadioButton rdbtnLeg;
 	
+	//Label to show the Block Option 
 	private Label lblSupBlock;
+	
+	//Radio button to show the area that can be blocked
 	private JRadioButton rdbtnHead_1;
 	private JRadioButton rdbtnTorso_1;
 	private JRadioButton rdbtnLeg_1;
 	
+	//Dice value to calculate the critical hit of the character  
 	private int batDice;
 	private int supDice;
 	
-	private int batAttackDice;
-	
+	//Dice Object to get the value of Dice 
 	private Dice die;
+	
+	//Label to show the end result of the Match
 	private JLabel lblNewLabel;
 	//Initialize the character object here
 	//Constructor initializes components and organize them using certain layouts
@@ -83,7 +103,6 @@ public class PlayPanel extends JPanel
 		gbc_lblNewLabel.gridy = 2;
 		add(lblNewLabel, gbc_lblNewLabel);
 		
-				
 		progressBar_Bat = new JProgressBar();
 		GridBagConstraints gbc_progressBar = new GridBagConstraints();
 		gbc_progressBar.fill = GridBagConstraints.HORIZONTAL;

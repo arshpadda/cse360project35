@@ -10,7 +10,11 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import java.util.*;
-
+/**
+ * Panel is a tab on the applet htat shows the information of the Stats.
+ * @author Team35
+ *
+ */
 public class StatPanel extends JPanel
 {
 	//stats object to contain and update stats.

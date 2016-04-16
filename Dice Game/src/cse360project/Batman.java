@@ -6,6 +6,7 @@ package cse360project;
  */
 
 public class Batman extends Character{
+	
 	/**
 	 * Batman Class constructor to initialize the health and the attack power of
 	 * the 3 weapons 
@@ -17,24 +18,38 @@ public class Batman extends Character{
 		weapon3 = 6;
 	}
 	
+	/**
+	 * Return the value of weapon1
+	 */
 	int getWeapon1(){
 		return weapon1;
 	}
 	
+	/**
+	 * Return the value of weapon2
+	 */
 	int getWeapon2(){
 		return weapon2;
 	}
 	
+	/**
+	 * Return the value of weapon3
+	 */
 	int getWeapon3(){
 		return weapon3;
 	}
 	
+	/**
+	 * Update the health of Batman 
+	 */
 	void updateHealth(int health){
 		healthBar = health;
 	}
 	
+	/**
+	 * Return the value of healthBar
+	 */
 	int getHealth(){
 		return healthBar;
 	}
-
 }
