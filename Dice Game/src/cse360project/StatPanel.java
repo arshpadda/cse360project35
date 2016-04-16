@@ -36,9 +36,9 @@ public class StatPanel extends JPanel
 		
 		gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		comboBox = new JComboBox();
@@ -49,9 +49,12 @@ public class StatPanel extends JPanel
 		gbc_comboBox.anchor = GridBagConstraints.SOUTH;
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox.gridx = 1;
-		gbc_comboBox.gridy = 0;
+		gbc_comboBox.gridx = 2;
+		gbc_comboBox.gridy = 1;
 		add(comboBox, gbc_comboBox);
+		
+				//listeners for the JComboBoxes
+				comboBox.addActionListener(new ComboListener());
 		
 		comboBox_1 = new JComboBox();
 		comboBox_1.setBackground(Color.LIGHT_GRAY);
@@ -61,15 +64,16 @@ public class StatPanel extends JPanel
 		gbc_comboBox_1.anchor = GridBagConstraints.SOUTH;
 		gbc_comboBox_1.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox_1.gridx = 5;
-		gbc_comboBox_1.gridy = 0;
+		gbc_comboBox_1.gridx = 6;
+		gbc_comboBox_1.gridy = 1;
 		add(comboBox_1, gbc_comboBox_1);
+		comboBox_1.addActionListener(new ComboListener());
 		
 		rigidArea = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea = new GridBagConstraints();
 		gbc_rigidArea.insets = new Insets(0, 0, 5, 5);
-		gbc_rigidArea.gridx = 1;
-		gbc_rigidArea.gridy = 1;
+		gbc_rigidArea.gridx = 2;
+		gbc_rigidArea.gridy = 2;
 		add(rigidArea, gbc_rigidArea);
 		
 		textArea = new JTextArea();
@@ -79,20 +83,11 @@ public class StatPanel extends JPanel
 		gbc_textArea.gridheight = 2;
 		gbc_textArea.insets = new Insets(0, 0, 5, 5);
 		gbc_textArea.fill = GridBagConstraints.BOTH;
-		gbc_textArea.gridx = 1;
-		gbc_textArea.gridy = 2;
+		gbc_textArea.gridx = 2;
+		gbc_textArea.gridy = 3;
 		add(textArea, gbc_textArea);
 		
-		textArea_1 = new JTextArea();
-		textArea_1.setBackground(UIManager.getColor("Button.background"));
-		textArea_1.setEditable(false);
-		GridBagConstraints gbc_textArea_1 = new GridBagConstraints();
-		gbc_textArea_1.gridheight = 2;
-		gbc_textArea_1.insets = new Insets(0, 0, 5, 5);
-		gbc_textArea_1.fill = GridBagConstraints.BOTH;
-		gbc_textArea_1.gridx = 5;
-		gbc_textArea_1.gridy = 2;
-		add(textArea_1, gbc_textArea_1);
+		textArea.setText(stats.printChar(0));
 		
 		/*
 		button = new JButton("Test");
@@ -103,12 +98,17 @@ public class StatPanel extends JPanel
 		add(button, gbc_button);
 		*/
 		
-		textArea.setText(stats.printChar(0));
+		textArea_1 = new JTextArea();
+		textArea_1.setBackground(UIManager.getColor("Button.background"));
+		textArea_1.setEditable(false);
+		GridBagConstraints gbc_textArea_1 = new GridBagConstraints();
+		gbc_textArea_1.gridheight = 2;
+		gbc_textArea_1.insets = new Insets(0, 0, 5, 5);
+		gbc_textArea_1.fill = GridBagConstraints.BOTH;
+		gbc_textArea_1.gridx = 6;
+		gbc_textArea_1.gridy = 3;
+		add(textArea_1, gbc_textArea_1);
 		textArea_1.setText(stats.printChar(1));
-
-		//listeners for the JComboBoxes
-		comboBox.addActionListener(new ComboListener());
-		comboBox_1.addActionListener(new ComboListener());
 		
 		//listener for button
 		//button.addActionListener(new ButtonListener());

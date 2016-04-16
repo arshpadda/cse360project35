@@ -11,6 +11,8 @@ import java.util.*;
 import java.awt.*;
 public class Project extends JApplet
 {
+	public Project() {
+	}
 	private int APPLET_WIDTH = 850, APPLET_HEIGHT = 450;
 	private JTabbedPane tPane;
 	private PlayPanel playPanel;

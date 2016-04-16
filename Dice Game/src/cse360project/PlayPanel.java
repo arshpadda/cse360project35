@@ -58,7 +58,6 @@ public class PlayPanel extends JPanel
 	private int batAttackDice;
 	
 	private Dice die;
-	
 	private JLabel lblNewLabel;
 	//Initialize the character object here
 	//Constructor initializes components and organize them using certain layouts
@@ -68,10 +67,10 @@ public class PlayPanel extends JPanel
 		
 		this.sPanel = sPanel;
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 32, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		Sup = new Superman();
@@ -79,28 +78,28 @@ public class PlayPanel extends JPanel
 		
 		lblNewLabel = new JLabel("");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.gridwidth = 6;
-		gbc_lblNewLabel.gridheight = 2;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 1;
-		gbc_lblNewLabel.gridy = 1;
+		gbc_lblNewLabel.gridx = 2;
+		gbc_lblNewLabel.gridy = 2;
 		add(lblNewLabel, gbc_lblNewLabel);
 		
 				
 		progressBar_Bat = new JProgressBar();
 		GridBagConstraints gbc_progressBar = new GridBagConstraints();
+		gbc_progressBar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_progressBar.insets = new Insets(0, 0, 5, 5);
-		gbc_progressBar.gridx = 0;
-		gbc_progressBar.gridy = 3;
+		gbc_progressBar.gridx = 1;
+		gbc_progressBar.gridy = 2;
 		add(progressBar_Bat, gbc_progressBar);
 		//Will change according to the health of the Player 
 		progressBar_Bat.setValue(Bat.getHealth());
 		
 		progressBar_Sup = new JProgressBar();
 		GridBagConstraints gbc_progressBar_1 = new GridBagConstraints();
-		gbc_progressBar_1.insets = new Insets(0, 0, 5, 0);
-		gbc_progressBar_1.gridx = 7;
-		gbc_progressBar_1.gridy = 3;
+		gbc_progressBar_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_progressBar_1.insets = new Insets(0, 0, 5, 5);
+		gbc_progressBar_1.gridx = 3;
+		gbc_progressBar_1.gridy = 2;
 		add(progressBar_Sup, gbc_progressBar_1);
 		//Will change according to the health of the Player
 		progressBar_Sup.setValue(Sup.getHealth());
@@ -108,22 +107,23 @@ public class PlayPanel extends JPanel
 		label = new Label("Batman");
 		GridBagConstraints gbc_label = new GridBagConstraints();
 		gbc_label.insets = new Insets(0, 0, 5, 5);
-		gbc_label.gridx = 0;
-		gbc_label.gridy = 4;
+		gbc_label.gridx = 1;
+		gbc_label.gridy = 3;
 		add(label, gbc_label);
 		
 		label_1 = new Label("Superman");
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
-		gbc_label_1.insets = new Insets(0, 0, 5, 0);
-		gbc_label_1.gridx = 7;
-		gbc_label_1.gridy = 4;
+		gbc_label_1.insets = new Insets(0, 0, 5, 5);
+		gbc_label_1.gridx = 3;
+		gbc_label_1.gridy = 3;
 		add(label_1, gbc_label_1);
 		
-		rdbtnWeapon = new JRadioButton("BatWeapon1");
+		rdbtnWeapon = new JRadioButton("Weapon 1 (10 attack, head)");
 		GridBagConstraints gbc_rdbtnWeapon = new GridBagConstraints();
+		gbc_rdbtnWeapon.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnWeapon.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnWeapon.gridx = 0;
-		gbc_rdbtnWeapon.gridy = 5;
+		gbc_rdbtnWeapon.gridx = 1;
+		gbc_rdbtnWeapon.gridy = 4;
 		add(rdbtnWeapon, gbc_rdbtnWeapon);
 		
 		buttonGroup1.add(rdbtnWeapon);
@@ -131,49 +131,54 @@ public class PlayPanel extends JPanel
 		//setActionCommand for each JRadioButton
 		rdbtnWeapon.setActionCommand("1");
 		
-		rdbtnWeapon_3 = new JRadioButton("SupWeapon1");
+		rdbtnWeapon_3 = new JRadioButton("Weapon 1 (10 attack, head)");
 		GridBagConstraints gbc_rdbtnWeapon_3 = new GridBagConstraints();
-		gbc_rdbtnWeapon_3.insets = new Insets(0, 0, 5, 0);
-		gbc_rdbtnWeapon_3.gridx = 7;
-		gbc_rdbtnWeapon_3.gridy = 5;
+		gbc_rdbtnWeapon_3.anchor = GridBagConstraints.WEST;
+		gbc_rdbtnWeapon_3.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnWeapon_3.gridx = 3;
+		gbc_rdbtnWeapon_3.gridy = 4;
 		add(rdbtnWeapon_3, gbc_rdbtnWeapon_3);
 		
 		buttonGroup2.add(rdbtnWeapon_3);
 		
 		rdbtnWeapon_3.setActionCommand("1");
 		
-		rdbtnWeapon_1 = new JRadioButton("BatWeapon2");
+		rdbtnWeapon_1 = new JRadioButton("Weapon 2 (8 attack, torso)");
 		GridBagConstraints gbc_rdbtnWeapon_1 = new GridBagConstraints();
+		gbc_rdbtnWeapon_1.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnWeapon_1.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnWeapon_1.gridx = 0;
-		gbc_rdbtnWeapon_1.gridy = 6;
+		gbc_rdbtnWeapon_1.gridx = 1;
+		gbc_rdbtnWeapon_1.gridy = 5;
 		add(rdbtnWeapon_1, gbc_rdbtnWeapon_1);
 		buttonGroup1.add(rdbtnWeapon_1);
 		rdbtnWeapon_1.setActionCommand("2");
 		
-		rdbtnWeapon_4 = new JRadioButton("SupWeapon2");
+		rdbtnWeapon_4 = new JRadioButton("Weapon 2 (8 attack, torso)");
 		GridBagConstraints gbc_rdbtnWeapon_4 = new GridBagConstraints();
-		gbc_rdbtnWeapon_4.insets = new Insets(0, 0, 5, 0);
-		gbc_rdbtnWeapon_4.gridx = 7;
-		gbc_rdbtnWeapon_4.gridy = 6;
+		gbc_rdbtnWeapon_4.anchor = GridBagConstraints.WEST;
+		gbc_rdbtnWeapon_4.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnWeapon_4.gridx = 3;
+		gbc_rdbtnWeapon_4.gridy = 5;
 		add(rdbtnWeapon_4, gbc_rdbtnWeapon_4);
 		buttonGroup2.add(rdbtnWeapon_4);
 		rdbtnWeapon_4.setActionCommand("2");
 		
-		rdbtnWeapon_2 = new JRadioButton("BatWeapon3");
+		rdbtnWeapon_2 = new JRadioButton("Weapon 3 (6 attack, legs)");
 		GridBagConstraints gbc_rdbtnWeapon_2 = new GridBagConstraints();
+		gbc_rdbtnWeapon_2.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnWeapon_2.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnWeapon_2.gridx = 0;
-		gbc_rdbtnWeapon_2.gridy = 7;
+		gbc_rdbtnWeapon_2.gridx = 1;
+		gbc_rdbtnWeapon_2.gridy = 6;
 		add(rdbtnWeapon_2, gbc_rdbtnWeapon_2);
 		buttonGroup1.add(rdbtnWeapon_2);
 		rdbtnWeapon_2.setActionCommand("3");
 		
-		rdbtnWeapon_5 = new JRadioButton("SupWeapon3");
+		rdbtnWeapon_5 = new JRadioButton("Weapon 3 (6 attack, legs)");
 		GridBagConstraints gbc_rdbtnWeapon_5 = new GridBagConstraints();
-		gbc_rdbtnWeapon_5.insets = new Insets(0, 0, 5, 0);
-		gbc_rdbtnWeapon_5.gridx = 7;
-		gbc_rdbtnWeapon_5.gridy = 7;
+		gbc_rdbtnWeapon_5.anchor = GridBagConstraints.WEST;
+		gbc_rdbtnWeapon_5.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnWeapon_5.gridx = 3;
+		gbc_rdbtnWeapon_5.gridy = 6;
 		add(rdbtnWeapon_5, gbc_rdbtnWeapon_5);
 		buttonGroup2.add(rdbtnWeapon_5);
 		rdbtnWeapon_5.setActionCommand("3");
@@ -181,83 +186,89 @@ public class PlayPanel extends JPanel
 		label_2 = new Label("Bat Block");
 		GridBagConstraints gbc_label_2 = new GridBagConstraints();
 		gbc_label_2.insets = new Insets(0, 0, 5, 5);
-		gbc_label_2.gridx = 0;
-		gbc_label_2.gridy = 9;
+		gbc_label_2.gridx = 1;
+		gbc_label_2.gridy = 8;
 		add(label_2, gbc_label_2);
 		
 		lblSupBlock = new Label("Sup Block");
 		GridBagConstraints gbc_lblSupBlock = new GridBagConstraints();
-		gbc_lblSupBlock.insets = new Insets(0, 0, 5, 0);
-		gbc_lblSupBlock.gridx = 7;
-		gbc_lblSupBlock.gridy = 9;
+		gbc_lblSupBlock.insets = new Insets(0, 0, 5, 5);
+		gbc_lblSupBlock.gridx = 3;
+		gbc_lblSupBlock.gridy = 8;
 		add(lblSupBlock, gbc_lblSupBlock);
 		
 		rdbtnHead = new JRadioButton("Head");
 		GridBagConstraints gbc_rdbtnHead = new GridBagConstraints();
+		gbc_rdbtnHead.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnHead.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnHead.gridx = 0;
-		gbc_rdbtnHead.gridy = 10;
+		gbc_rdbtnHead.gridx = 1;
+		gbc_rdbtnHead.gridy = 9;
 		add(rdbtnHead, gbc_rdbtnHead);
 		buttonGroup3.add(rdbtnHead);
 		rdbtnHead.setActionCommand("1");
 		
 		rdbtnHead_1 = new JRadioButton("Head");
 		GridBagConstraints gbc_rdbtnHead_1 = new GridBagConstraints();
-		gbc_rdbtnHead_1.insets = new Insets(0, 0, 5, 0);
-		gbc_rdbtnHead_1.gridx = 7;
-		gbc_rdbtnHead_1.gridy = 10;
+		gbc_rdbtnHead_1.anchor = GridBagConstraints.WEST;
+		gbc_rdbtnHead_1.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnHead_1.gridx = 3;
+		gbc_rdbtnHead_1.gridy = 9;
 		add(rdbtnHead_1, gbc_rdbtnHead_1);
 		buttonGroup4.add(rdbtnHead_1);
 		rdbtnHead_1.setActionCommand("1");
 		
 		rdbtnTorso = new JRadioButton("Torso");
 		GridBagConstraints gbc_rdbtnTorso = new GridBagConstraints();
+		gbc_rdbtnTorso.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnTorso.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnTorso.gridx = 0;
-		gbc_rdbtnTorso.gridy = 11;
+		gbc_rdbtnTorso.gridx = 1;
+		gbc_rdbtnTorso.gridy = 10;
 		add(rdbtnTorso, gbc_rdbtnTorso);
 		buttonGroup3.add(rdbtnTorso);
 		rdbtnTorso.setActionCommand("2");
-		
+				
 		rdbtnTorso_1 = new JRadioButton("Torso");
 		GridBagConstraints gbc_rdbtnTorso_1 = new GridBagConstraints();
-		gbc_rdbtnTorso_1.insets = new Insets(0, 0, 5, 0);
-		gbc_rdbtnTorso_1.gridx = 7;
-		gbc_rdbtnTorso_1.gridy = 11;
+		gbc_rdbtnTorso_1.anchor = GridBagConstraints.WEST;
+		gbc_rdbtnTorso_1.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnTorso_1.gridx = 3;
+		gbc_rdbtnTorso_1.gridy = 10;
 		add(rdbtnTorso_1, gbc_rdbtnTorso_1);
 		buttonGroup4.add(rdbtnTorso_1);
 		rdbtnTorso_1.setActionCommand("2");
-
+		
 		rdbtnLeg = new JRadioButton("Leg");
 		GridBagConstraints gbc_rdbtnLeg = new GridBagConstraints();
+		gbc_rdbtnLeg.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnLeg.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnLeg.gridx = 0;
-		gbc_rdbtnLeg.gridy = 12;
+		gbc_rdbtnLeg.gridx = 1;
+		gbc_rdbtnLeg.gridy = 11;
 		add(rdbtnLeg, gbc_rdbtnLeg);
 		buttonGroup3.add(rdbtnLeg);
 		rdbtnLeg.setActionCommand("3");
 		
 		rdbtnLeg_1 = new JRadioButton("Leg");
 		GridBagConstraints gbc_rdbtnLeg_1 = new GridBagConstraints();
-		gbc_rdbtnLeg_1.insets = new Insets(0, 0, 5, 0);
-		gbc_rdbtnLeg_1.gridx = 7;
-		gbc_rdbtnLeg_1.gridy = 12;
+		gbc_rdbtnLeg_1.anchor = GridBagConstraints.WEST;
+		gbc_rdbtnLeg_1.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnLeg_1.gridx = 3;
+		gbc_rdbtnLeg_1.gridy = 11;
 		add(rdbtnLeg_1, gbc_rdbtnLeg_1);
 		buttonGroup4.add(rdbtnLeg_1);
 		rdbtnLeg_1.setActionCommand("3");
-
+				
 		btnAttack = new JButton("Attack");
 		GridBagConstraints gbc_btnAttack = new GridBagConstraints();
-		gbc_btnAttack.insets = new Insets(0, 0, 0, 5);
-		gbc_btnAttack.gridx = 4;
-		gbc_btnAttack.gridy = 14;
+		gbc_btnAttack.insets = new Insets(0, 0, 5, 5);
+		gbc_btnAttack.gridx = 2;
+		gbc_btnAttack.gridy = 13;
 		add(btnAttack, gbc_btnAttack);
+				
+						
+		//listener for the button
+		btnAttack.addActionListener(new ButtonListener());
 		
 		die = new Dice();  
-
-		
-		//listener for the button
-	    btnAttack.addActionListener(new ButtonListener());
 	}
 
  
@@ -374,6 +385,7 @@ public class PlayPanel extends JPanel
 				sPanel.updateMostTurns(0,1,turn);
 				progressBar_Bat.setValue(100);
 				progressBar_Sup.setValue(100);
+				turn = 0;
 			}
 		}
 	} 
