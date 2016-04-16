@@ -1,5 +1,8 @@
 # Batman vs Superman
 
+
+To run the game, run the Project.java file.
+
 The implementation of the project is a Java applet.  Project.java, PlayPanel.java, StatPanel.java, Stats.java, Character.java, Batman.java, Superman.java, and Dice.java are used.  ProjectTest.java and StatsTest.java contains unit tests.
 
 The applet has a Play tab and a Stat tab.
