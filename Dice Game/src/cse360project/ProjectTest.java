@@ -15,6 +15,25 @@ public class ProjectTest {
 	Superman superTest = new Superman();
 
 	@Test
+	public void testProject() {
+		
+		assertNotNull(game);
+	}
+	
+
+	@Test
+	public void testBatman() {
+		
+		assertNotNull(batTest);
+	}
+	
+	@Test
+	public void testSuperman() {
+		
+		assertNotNull(superTest);
+	}
+	
+	@Test
 	public void testBatmanHealth() {
 	
 		//Test health
@@ -46,7 +65,6 @@ public class ProjectTest {
 	@Test
 	public void testSupermanHealth() {
 	
-		//Test health
 		assertEquals(superTest.getHealth(), 100);
 	}
 	
