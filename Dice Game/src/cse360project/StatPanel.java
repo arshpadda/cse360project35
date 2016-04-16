@@ -125,10 +125,10 @@ public class StatPanel extends JPanel
 	 * @param c2Loc body part hit by character2 on character1, give the dice number
 	 * @param c1Health character1's health before the attack
 	 * @param c2Health character2's health before the attack
-	 * @param c1Crit whether character1 crit, boolean
-	 * @param c2Crit whether character2 crit, boolean
+	 * @param c1Crit whether character1 crit, 12 = crit
+	 * @param c2Crit whether character2 crit, 12 = crit
 	 */
-	public void updateStats(int character1, int character2, int c1Damage, int c2Damage, int c1Loc, int c2Loc, int c1Health, int c2Health, boolean c1Crit, boolean c2Crit)
+	public void updateStats(int character1, int character2, int c1Damage, int c2Damage, int c1Loc, int c2Loc, int c1Health, int c2Health, int c1Crit, int c2Crit)
 	{
 		//Directly pass the arguments to stats.attackUpdate()
 		stats.attackUpdate(character1, character2, c1Damage, c2Damage, c1Loc, c2Loc, c1Health, c2Health, c1Crit, c2Crit);

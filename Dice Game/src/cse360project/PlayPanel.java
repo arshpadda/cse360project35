@@ -348,7 +348,8 @@ public class PlayPanel extends JPanel
 				progressBar_Bat.setValue(batHealth);
 				progressBar_Sup.setValue(supHealth);
 				
-				//call sPanel.updateStats() around here
+				sPanel.updateStats(0, 1, batAttack, supAttack, batAreaAttacked - 1, supAreaAttacked - 1, batHealth + supAttack, supHealth + batAttack, batDice, supDice);
+				
 				if(batHealth <= 0 && supHealth <=0){
 					System.out.println("Its a draw");
 					lblNewLabel.setText("Draw");
