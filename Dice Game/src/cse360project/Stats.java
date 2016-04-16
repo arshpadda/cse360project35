@@ -259,7 +259,7 @@ public class Stats
 		output = output + "Critical Hits:\t\t"				 + stats[9][charInt] + "\n";
 		output = output + "Most Turns:\t\t"					 + stats[10][charInt] + "\n";
 		
-		//add temporary stats
+		//add temporary stats, not implemented at the moment
 		//output = output + "Tournament Damage Dealt:\t"	 + tempDamageDone[charInt] + "\n";
 		//output = output + "Tournament Damage Taken:\t"	 + tempDamageDone[charInt] + "\n";
 		
@@ -268,6 +268,7 @@ public class Stats
 	
 	/**
 	 * Reset the temporary stats when a new tournament starts
+	 * Not used while tournament is not implemented
 	 */
 	public void resetTemp()
 	{
