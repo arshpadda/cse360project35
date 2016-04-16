@@ -12,7 +12,7 @@ public class Superman extends Character{
 		healthBar = 100;
 		weapon1 = 10;
 		weapon2 = 8;
-		weapon3 = 5;
+		weapon3 = 6;
 	}
 	
 	int getWeapon1(){
