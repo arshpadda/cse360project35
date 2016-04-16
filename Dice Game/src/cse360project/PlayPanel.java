@@ -331,13 +331,11 @@ public class PlayPanel extends JPanel
 					batAttack = Bat.getWeapon3();
 				}
 				
+				//Calculate Batman Critical Hit Chance
 				batDice = die.getDie1() + die.getDie1();
-				
 				if(batDice > 11){
 					batAttack = batAttack + (int)(batAttack*0.2);
 				}
-				
-				System.out.println(batDice);
 				
 				//Get Superman Weapon Choice
 				if (supermanWeapon == 1){
@@ -350,24 +348,28 @@ public class PlayPanel extends JPanel
 					supAttack = Sup.getWeapon3();
 				}
 				
-				supDice = die.getDie1();
-				System.out.println(supDice + "\n");
+				//Calculate Superman Critical Health Chance
 				supDice = die.getDie1() + die.getDie1();
 				System.out.println(supDice);
 				if(supDice > 11){
 					supAttack = (supAttack + (int)(supAttack*0.2));
 				}
 				
+				//See if Block is successful for Batman
 				if (batAreaAttacked == batAreaDefended){
 					supAttack = 0;
 				}
+				
+				//See if Block is successful for Superman 
 				if(supAreaAttacked == supAreaDefended){
 					batAttack = 0;
 				}
+				
+				//Get the update health after the Attack
 				int supHealth = Sup.getHealth() - batAttack;
 				int batHealth = Bat.getHealth() - supAttack;
 				
-				//use if condition to check health and declare a winner if any. 
+				//Update the Health of the Character  
 				Sup.updateHealth(supHealth);
 				Bat.updateHealth(batHealth);
 				
@@ -375,12 +377,14 @@ public class PlayPanel extends JPanel
 				System.out.println("BatHealth : "+batHealth);
 				System.out.println("SupHealth : "+supHealth);
 
+				//Update the progress bar of the characters 
 				progressBar_Bat.setValue(batHealth);
 				progressBar_Sup.setValue(supHealth);
 				
 				//call updateStats to update stats with the latest attack.  Doesn't update most turns.
 				sPanel.updateStats(0, 1, batAttack, supAttack, batAreaAttacked - 1, supAreaAttacked - 1, batHealth + supAttack, supHealth + batAttack, batDice, supDice);
 				
+				//test whether we have a draw or a winner
 				if(batHealth <= 0 && supHealth <=0){
 					System.out.println("Its a draw");
 					lblNewLabel.setText("Draw");
@@ -398,12 +402,21 @@ public class PlayPanel extends JPanel
 			//Reached when reset occurs
 			else
 			{
+				//Reset the Winner or Draw Label
 				lblNewLabel.setText("");
+				
+				//Update the health of the character 
 				Sup.updateHealth(100);
 				Bat.updateHealth(100);
+				
+				//Update the turn panel
 				sPanel.updateMostTurns(0,1,turn);
+				
+				//Reset the progress bar
 				progressBar_Bat.setValue(100);
 				progressBar_Sup.setValue(100);
+				
+				//Reset the turn
 				turn = 0;
 			}
 		}
