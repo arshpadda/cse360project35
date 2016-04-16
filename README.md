@@ -1,6 +1,6 @@
 # Batman vs Superman
 
-The implementation of the project is a Java applet.
+The implementation of the project is a Java applet.  Project.java, PlayPanel.java, StatPanel.java, Character.java, Batman.java, Superman.java, and Dice.java are used.  ProjectTest.java contains unit tests.
 
 The applet has a Play tab and a Stat tab.
 Statistics are saved locally in a file called statistics.txt, if it doesn't exist it will be created.
