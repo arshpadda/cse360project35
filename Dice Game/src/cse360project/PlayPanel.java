@@ -348,6 +348,7 @@ public class PlayPanel extends JPanel
 				progressBar_Bat.setValue(batHealth);
 				progressBar_Sup.setValue(supHealth);
 				
+				//call updateStats to update stats with the latest attack.  Doesn't update most turns.
 				sPanel.updateStats(0, 1, batAttack, supAttack, batAreaAttacked - 1, supAreaAttacked - 1, batHealth + supAttack, supHealth + batAttack, batDice, supDice);
 				
 				if(batHealth <= 0 && supHealth <=0){
