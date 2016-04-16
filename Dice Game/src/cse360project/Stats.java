@@ -159,8 +159,8 @@ public class Stats
 	 * @param character2 int representing the second character
 	 * @param c1Damage damage dealt by character1, taken by character2
 	 * @param c2Damage damage dealt by character2, taken by character1
-	 * @param c1Loc body part hit by character1 on character2, give the dice number
-	 * @param c2Loc body part hit by character2 on character1, give the dice number
+	 * @param c1Loc body part hit by character1 on character2, 0 = head, 1 = chest, 2 = leg
+	 * @param c2Loc body part hit by character2 on character1, 0 = head, 1 = chest, 2 = leg
 	 * @param c1Health character1's health before the attack
 	 * @param c2Health character2's health before the attack
 	 * @param c1Crit whether character1 crit, 12 = crit
@@ -168,8 +168,6 @@ public class Stats
 	 */
 	public void attackUpdate(int character1, int character2, int c1Damage, int c2Damage, int c1Loc, int c2Loc, int c1Health, int c2Health, int c1Crit, int c2Crit)
 	{
-		//first convert the dice number into 0, 1  or 2
-		//needs implementation
 		
 		//first check for the end of the fight, wins losses and draws
 		//c1 loses

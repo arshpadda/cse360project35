@@ -121,8 +121,8 @@ public class StatPanel extends JPanel
 	 * @param character2 int representing the second character
 	 * @param c1Damage damage dealt by character1, taken by character2
 	 * @param c2Damage damage dealt by character2, taken by character1
-	 * @param c1Loc body part hit by character1 on character2, give the dice number
-	 * @param c2Loc body part hit by character2 on character1, give the dice number
+	 * @param c1Loc body part hit by character1 on character2, 0 = head, 1 = chest, 2 = leg
+	 * @param c2Loc body part hit by character2 on character1, 0 = head, 1 = chest, 2 = leg
 	 * @param c1Health character1's health before the attack
 	 * @param c2Health character2's health before the attack
 	 * @param c1Crit whether character1 crit, 12 = crit
