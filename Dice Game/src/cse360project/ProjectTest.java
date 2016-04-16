@@ -5,8 +5,8 @@ package cse360project;
  * @version April 15, 2016
  */
 import static org.junit.Assert.*;
-
 import org.junit.Test;
+
 
 public class ProjectTest {
 	
@@ -15,39 +15,59 @@ public class ProjectTest {
 	Superman superTest = new Superman();
 
 	@Test
-	public void testBatman() {
-		
-		//Test health and weapons
-		assertEquals(batTest.getHealth(), 100);
-		assertEquals(batTest.getWeapon1(), 10);
-		assertEquals(batTest.getWeapon1(), 8);
-		assertEquals(batTest.getWeapon1(), 5);
-		
-		//Test health updating
-		batTest.updateHealth(75);
-		assertEquals(batTest.getHealth(), 75);
-		batTest.updateHealth(50);
-		assertEquals(batTest.getHealth(), 50);
-		batTest.updateHealth(100);
+	public void testBatmanHealth() {
+	
+		//Test health
 		assertEquals(batTest.getHealth(), 100);
 	}
 	
 	@Test
-	public void testSuperman() {
-		
-		//Test health and weapons
-		assertEquals(superTest.getHealth(), 100);
-		assertEquals(superTest.getWeapon1(), 10);
-		assertEquals(superTest.getWeapon1(), 8);
-		assertEquals(superTest.getWeapon1(), 5);
-		
-		//Test health updating
-		superTest.updateHealth(75);
-		assertEquals(superTest.getHealth(), 75);
-		superTest.updateHealth(50);
-		assertEquals(superTest.getHealth(), 50);
-		superTest.updateHealth(100);
-		assertEquals(superTest.getHealth(), 100);
+	public void testBatmanWeapon1() {
+		assertEquals(batTest.getWeapon1(), 10);
+	}
+	
+	@Test
+	public void testBatmanWeapon2() {
+		assertEquals(batTest.getWeapon2(), 8);
 	}
 
+	@Test
+	public void testBatmanWeapon3() {
+		assertEquals(batTest.getWeapon3(), 6);
+	}
+	
+	@Test
+	public void testBatmanUpdateHealth() {
+		batTest.updateHealth(75);
+		assertEquals(batTest.getHealth(), 75);
+	}
+	
+	
+	@Test
+	public void testSupermanHealth() {
+	
+		//Test health
+		assertEquals(superTest.getHealth(), 100);
+	}
+	
+	@Test
+	public void testSupermanWeapon1() {
+		assertEquals(superTest.getWeapon1(), 10);
+	}
+	
+	@Test
+	public void testSUpermanWeapon2() {
+		assertEquals(batTest.getWeapon2(), 8);
+	}
+
+	@Test
+	public void testSupermanWeapon3() {
+		assertEquals(superTest.getWeapon3(), 6);
+	}
+	
+	@Test
+	public void testSupermanUpdateHealth() {
+		batTest.updateHealth(75);
+		assertEquals(superTest.getHealth(), 75);
+	}
 }
