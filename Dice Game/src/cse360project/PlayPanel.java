@@ -298,9 +298,6 @@ public class PlayPanel extends JPanel
 				int batAttack;
 				int supAttack;
 				
-				
-				
-				
 				//Get Batman Weapon Choice
 				if (batmanWeapon == 1){
 					batAttack = Bat.getWeapon1();

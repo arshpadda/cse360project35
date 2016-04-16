@@ -4,6 +4,7 @@ package cse360project;
  * @author Team35
  * @version April 15, 2016
  */
+
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -20,11 +21,17 @@ public class ProjectTest {
 		assertNotNull(game);
 	}
 	
-
 	@Test
 	public void testBatman() {
 		
 		assertNotNull(batTest);
+	}
+	
+	@Test
+	public void testDice() {
+		
+		Dice die = new Dice();
+		assertNotNull(die);
 	}
 	
 	@Test
