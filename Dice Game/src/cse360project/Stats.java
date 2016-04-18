@@ -9,7 +9,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Scanner;
+
 
 //Stats class for all characters
 public class Stats
@@ -218,6 +220,12 @@ public class Stats
 		stats[c1Loc + 6][character1]++;
 		stats[c2Loc + 6][character2]++;
 		
+		//check for a block
+		if(c1Damage == 0)
+			stats[11][character2]++;
+		if(c2Damage == 0)
+			stats[11][character1]++;
+		
 		//character1 critical hit
 		if(c1Crit == 12)
 			stats[9][character1]++;
@@ -243,6 +251,9 @@ public class Stats
 	 */
 	public String printChar(int charInt)
 	{
+		//decimalFormat created for the float values
+		DecimalFormat decimalFormat = new DecimalFormat("#.00");
+		
 		String output = "";
 		
 		//add first stat to the string
@@ -253,7 +264,10 @@ public class Stats
 		output = output + "Draws:\t\t"						 + stats[2][charInt] + "\n";
 		output = output + "Total Turns:\t\t" 	   			 + stats[3][charInt] + "\n";
 		output = output + "Damage Done:\t\t"				 + stats[4][charInt] + "\n";
+		output = output + "Average Damage:\t"				 + decimalFormat.format((float)stats[4][charInt]/stats[3][charInt]) + "\n";
 		output = output + "Damage Taken:\t"					 + stats[5][charInt] + "\n";
+		output = output + "Blocks:\t\t"						 + stats[11][charInt] + "\n";
+		output = output + "Block Rate:\t\t"					 + "%" + decimalFormat.format((float)100*stats[11][charInt]/stats[3][charInt]) + "\n";
 		output = output + "Head Hits:\t\t"					 + stats[6][charInt] + "\n";
 		output = output + "Body Hits:\t\t"					 + stats[7][charInt] + "\n";
 		output = output + "Leg Hits:\t\t"		 			 + stats[8][charInt] + "\n";
