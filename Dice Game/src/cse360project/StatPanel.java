@@ -11,7 +11,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.util.*;
 /**
- * Panel is a tab on the applet htat shows the information of the Stats.
+ * Panel is a tab on the applet that shows the information of the Stats.
  * @author Team35
  *
  */
