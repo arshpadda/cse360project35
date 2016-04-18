@@ -21,7 +21,7 @@ public class Project extends JApplet
 	//Applet launches with two tabs
 	public void init()
 	{
-		statPanel = new StatPanel(2, 11);
+		statPanel = new StatPanel(2, 12);
 		playPanel = new PlayPanel(statPanel);
 		//create a tabbed pane with two tabs
 		tPane = new JTabbedPane();

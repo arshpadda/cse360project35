@@ -24,6 +24,7 @@ public class Stats
 	turns		 = 3
 	damageDone	 = 4
 	damageTaken	 = 5
+	blocks		 = 11
 	
 	hitHead		 = 6
 	hitChest	 = 7
@@ -259,9 +260,9 @@ public class Stats
 		output = output + "Critical Hits:\t\t"				 + stats[9][charInt] + "\n";
 		output = output + "Most Turns:\t\t"					 + stats[10][charInt] + "\n";
 		
-		//add temporary stats, not implemented at the moment
-		//output = output + "Tournament Damage Dealt:\t"	 + tempDamageDone[charInt] + "\n";
-		//output = output + "Tournament Damage Taken:\t"	 + tempDamageDone[charInt] + "\n";
+		//add temporary stats
+		output = output + "Tournament Damage Dealt:\t"	 + tempDamageDone[charInt] + "\n";
+		output = output + "Tournament Damage Taken:\t"	 + tempDamageDone[charInt] + "\n";
 		
 		return output;
 	}
