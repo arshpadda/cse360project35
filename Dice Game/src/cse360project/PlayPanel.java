@@ -28,6 +28,10 @@ public class PlayPanel extends JPanel
 	private final ButtonGroup buttonGroup3 = new ButtonGroup();
 	private final ButtonGroup buttonGroup4 = new ButtonGroup();
 	
+	//Images of characters
+	private ImageIcon imgBatman = new ImageIcon("Batman1.jpg");
+	private ImageIcon imgSuperman = new ImageIcon("Superman.jpg");
+	
 	//Class Object
 	private Superman Sup;
 	private Batman Bat;
@@ -137,7 +141,7 @@ public class PlayPanel extends JPanel
 		progressBar_Sup.setValue(Sup.getHealth());
 		
 		lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Owner\\git\\cse360project35\\Batman1.jpg"));
+		lblNewLabel_1.setIcon(new ImageIcon(PlayPanel.class.getResource("/cse360project/Batman1.jpg")));
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 1;
@@ -145,7 +149,7 @@ public class PlayPanel extends JPanel
 		add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Owner\\git\\cse360project35\\Superman.jpg"));
+		lblNewLabel_2.setIcon(new ImageIcon(PlayPanel.class.getResource("/cse360project/Superman.jpg")));
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 3;
