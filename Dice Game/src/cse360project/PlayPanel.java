@@ -98,7 +98,7 @@ public class PlayPanel extends JPanel
 		Sup = new Superman();
 		Bat = new Batman();
 		
-		//Initialize the Jlabel
+		//Initialize the Jlabel to show the result of the battle
 		lblNewLabel = new JLabel("");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
@@ -114,8 +114,10 @@ public class PlayPanel extends JPanel
 		gbc_progressBar.gridx = 1;
 		gbc_progressBar.gridy = 2;
 		add(progressBar_Bat, gbc_progressBar);
+		progressBar_Bat.setStringPainted(true);
+
 		
-		//Set the health of the Player
+		//Set the health of the Player using the Batman class object
 		progressBar_Bat.setValue(Bat.getHealth());
 		
 		//Initialize the Progress bar of superman
@@ -126,6 +128,8 @@ public class PlayPanel extends JPanel
 		gbc_progressBar_1.gridx = 3;
 		gbc_progressBar_1.gridy = 2;
 		add(progressBar_Sup, gbc_progressBar_1);
+		progressBar_Sup.setStringPainted(true);
+
 		
 		//Set the health of the Player
 		progressBar_Sup.setValue(Sup.getHealth());
@@ -391,7 +395,6 @@ public class PlayPanel extends JPanel
 				
 				//Calculate Superman Critical Health Chance
 				supDice = die.getDie1() + die.getDie1();
-				System.out.println(supDice);
 				if(supDice > 11){
 					supAttack = (supAttack + (int)(supAttack*0.2));
 				}
