@@ -57,8 +57,8 @@ public class StatPanel extends JPanel
 		gbc_comboBox.gridy = 1;
 		add(comboBox, gbc_comboBox);
 		
-				//listeners for the JComboBoxes
-				comboBox.addActionListener(new ComboListener());
+		//listeners for the JComboBoxes
+		comboBox.addActionListener(new ComboListener());
 		
 		comboBox_1 = new JComboBox();
 		comboBox_1.setBackground(Color.LIGHT_GRAY);

@@ -267,7 +267,7 @@ public class Stats
 		output = output + "Average Damage:\t"				 + decimalFormat.format((float)stats[4][charInt]/stats[3][charInt]) + "\n";
 		output = output + "Damage Taken:\t"					 + stats[5][charInt] + "\n";
 		output = output + "Blocks:\t\t"						 + stats[11][charInt] + "\n";
-		output = output + "Block Rate:\t\t"					 + "%" + decimalFormat.format((float)100*stats[11][charInt]/stats[3][charInt]) + "\n";
+		output = output + "Block Rate %:\t\t"					 + decimalFormat.format((float)100*stats[11][charInt]/stats[3][charInt]) + "\n";
 		output = output + "Head Hits:\t\t"					 + stats[6][charInt] + "\n";
 		output = output + "Body Hits:\t\t"					 + stats[7][charInt] + "\n";
 		output = output + "Leg Hits:\t\t"		 			 + stats[8][charInt] + "\n";
