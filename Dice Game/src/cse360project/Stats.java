@@ -117,7 +117,7 @@ public class Stats
 						if(charIndex < numChars-1)
 							writer.write(' ');
 						else
-							writer.write('\n');
+							writer.write(System.lineSeparator());
 					}
 				}
 				//close the FileWriter
@@ -321,7 +321,7 @@ public class Stats
 					if(charIndex < numChars-1)
 						writer.write(' ');
 					else
-						writer.write('\n');
+						writer.write(System.lineSeparator());
 				}
 			}
 			//close the FileWriter
