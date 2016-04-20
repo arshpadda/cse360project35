@@ -6,39 +6,44 @@ package cse360project;
  * @version April 15, 2016
  */
 
-public abstract class Character {
-	int healthBar;
-	int weapon1;
-	int weapon2;
-	int weapon3;
+public class Character {
+	int healthBar = 100;
+	int weapon1 = 10;
+	int weapon2 = 8;
+	int weapon3 = 6;
 	
-	/**
-	 * Abstract method that when implemented should return the attack
-	 * value of Weapon1  
-	 */
-	abstract int getWeapon1();
+	//String array that holds weapons names 
+	//[0][] = Batman, [1][] = Superman, [2][] = Wonder Woman, [3][] = Flash
+	String[][] weapons = new String[][]{
+			{"Bataraang","Kick","Grappling Hook"},
+			{"Heat Vision","Flying Punch","Ice Breath"},
+			{"Sword Slice","Lasso Grab","Shield Bash"},
+			{"Sonic Punch","Lightning Kick","Quick Step"}
+	};
 	
-	/**
-	 * Abstract method that when implemented should return the attack
-	 * value of Weapon2 
-	 */
-	abstract int getWeapon2();
+	int getWeapon1(){
+		return weapon1;
+	}
 	
-	/**
-	 * Abstract method that when implemented should return the attack
-	 * value of Weapon3
-	 */
-	abstract int getWeapon3();
 	
-	/**
-	 * Abstract method that when implemented should update the value of
-	 * the Health of character
-	 */
-	abstract void updateHealth(int health);
+	int getWeapon2(){
+		return weapon2;
+	}
 	
-	/**
-	 * Abstract method that when implemented should return the value of
-	 * Health of the character 
-	 */
-	abstract int getHealth();	
+	int getWeapon3(){
+		return weapon3;
+	}
+	
+
+	void updateHealth(int health){
+		healthBar = health;
+	}
+	
+	int getHealth(){
+		return healthBar;
+	}
+	
+	String weaponName(int hero, int weaponNum){
+		return weapons[hero][weaponNum];
+	}
 }

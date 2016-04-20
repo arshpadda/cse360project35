@@ -33,8 +33,8 @@ public class PlayPanel extends JPanel
 	private ImageIcon imgSuperman = new ImageIcon("Superman.jpg");
 	
 	//Class Object
-	private Superman Sup;
-	private Batman Bat;
+	private Character Sup;
+	private Character Bat;
 	
 	//Progress Bar to show the health of the character
 	private JProgressBar progressBar_Bat;
