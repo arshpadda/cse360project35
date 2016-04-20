@@ -104,8 +104,8 @@ public class PlayPanel extends JPanel
 		setLayout(gridBagLayout);
 		
 		//Initialize the class object  
-		Sup = new Superman();
-		Bat = new Batman();
+		Sup = new Character(1);
+		Bat = new Character(0);
 		
 		//Initialize the Jlabel to show the result of the battle
 		lblNewLabel = new JLabel("");
@@ -144,7 +144,7 @@ public class PlayPanel extends JPanel
 		progressBar_Sup.setValue(Sup.getHealth());
 		
 		lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(PlayPanel.class.getResource("/cse360project/Batman1.jpg")));
+		lblNewLabel_1.setIcon(Bat.heroPic());
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 1;
@@ -152,7 +152,7 @@ public class PlayPanel extends JPanel
 		add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(PlayPanel.class.getResource("/cse360project/Superman.jpg")));
+		lblNewLabel_2.setIcon(Sup.heroPic());
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 3;
@@ -160,7 +160,7 @@ public class PlayPanel extends JPanel
 		add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
 		//Initialize the Label of Batman
-		label = new Label("Batman");
+		label = new Label(Bat.heroName());
 		GridBagConstraints gbc_label = new GridBagConstraints();
 		gbc_label.insets = new Insets(0, 0, 5, 5);
 		gbc_label.gridx = 1;
@@ -168,7 +168,7 @@ public class PlayPanel extends JPanel
 		add(label, gbc_label);
 
 		//Initialize the Label of Superman
-		label_1 = new Label("Superman");
+		label_1 = new Label(Sup.heroName());
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
 		gbc_label_1.insets = new Insets(0, 0, 5, 5);
 		gbc_label_1.gridx = 3;
@@ -176,7 +176,7 @@ public class PlayPanel extends JPanel
 		add(label_1, gbc_label_1);
 		
 		//Initialize the Radiobutton for weapon 1 of batman
-		rdbtnWeapon = new JRadioButton("Weapon 1 (10 attack, head)");
+		rdbtnWeapon = new JRadioButton(Bat.weaponName(1) + " (10 attack, head)");
 		GridBagConstraints gbc_rdbtnWeapon = new GridBagConstraints();
 		gbc_rdbtnWeapon.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnWeapon.insets = new Insets(0, 0, 5, 5);
@@ -191,7 +191,7 @@ public class PlayPanel extends JPanel
 		rdbtnWeapon.setActionCommand("1");
 		
 		//Initialize the Radiobutton for weapon 1 of superman
-		rdbtnWeapon_3 = new JRadioButton("Weapon 1 (10 attack, head)");
+		rdbtnWeapon_3 = new JRadioButton(Sup.weaponName(1) + " (10 attack, head)");
 		GridBagConstraints gbc_rdbtnWeapon_3 = new GridBagConstraints();
 		gbc_rdbtnWeapon_3.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnWeapon_3.insets = new Insets(0, 0, 5, 5);
@@ -206,7 +206,7 @@ public class PlayPanel extends JPanel
 		rdbtnWeapon_3.setActionCommand("1");
 		
 		//Initialize the Radiobutton for weapon 2 of batman
-		rdbtnWeapon_1 = new JRadioButton("Weapon 2 (8 attack, torso)");
+		rdbtnWeapon_1 = new JRadioButton(Bat.weaponName(2) + " (8 attack, torso)");
 		GridBagConstraints gbc_rdbtnWeapon_1 = new GridBagConstraints();
 		gbc_rdbtnWeapon_1.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnWeapon_1.insets = new Insets(0, 0, 5, 5);
@@ -221,7 +221,7 @@ public class PlayPanel extends JPanel
 		rdbtnWeapon_1.setActionCommand("2");
 		
 		//Initialize the Radiobutton for weapon 2 of superman
-		rdbtnWeapon_4 = new JRadioButton("Weapon 2 (8 attack, torso)");
+		rdbtnWeapon_4 = new JRadioButton(Sup.weaponName(2) + " (8 attack, torso)");
 		GridBagConstraints gbc_rdbtnWeapon_4 = new GridBagConstraints();
 		gbc_rdbtnWeapon_4.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnWeapon_4.insets = new Insets(0, 0, 5, 5);
@@ -236,7 +236,7 @@ public class PlayPanel extends JPanel
 		rdbtnWeapon_4.setActionCommand("2");
 
 		//Initialize the Radiobutton for weapon 3 of batman
-		rdbtnWeapon_2 = new JRadioButton("Weapon 3 (6 attack, legs)");
+		rdbtnWeapon_2 = new JRadioButton(Bat.weaponName(3) + " (6 attack, legs)");
 		GridBagConstraints gbc_rdbtnWeapon_2 = new GridBagConstraints();
 		gbc_rdbtnWeapon_2.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnWeapon_2.insets = new Insets(0, 0, 5, 5);
@@ -251,7 +251,7 @@ public class PlayPanel extends JPanel
 		rdbtnWeapon_2.setActionCommand("3");
 		
 		//Initialize the Radiobutton for weapon 3 of superman
-		rdbtnWeapon_5 = new JRadioButton("Weapon 3 (6 attack, legs)");
+		rdbtnWeapon_5 = new JRadioButton(Sup.weaponName(3) + " (6 attack, legs)");
 		GridBagConstraints gbc_rdbtnWeapon_5 = new GridBagConstraints();
 		gbc_rdbtnWeapon_5.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnWeapon_5.insets = new Insets(0, 0, 5, 5);
