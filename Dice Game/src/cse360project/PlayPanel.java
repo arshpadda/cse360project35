@@ -22,6 +22,16 @@ public class PlayPanel extends JPanel
 {
 	//Stat panel object to collect, store and update the stats
 	private StatPanel sPanel;
+	
+	//panels to contain the different components
+	JPanel creation;
+	JPanel play;	
+	
+	GridBagLayout gridBagLayout;
+	CardLayout cardLayout;
+	
+	PlayPanel thisPanel;
+	
 	//Button group has different button to club the radio button together
 	private final ButtonGroup buttonGroup1 = new ButtonGroup();
 	private final ButtonGroup buttonGroup2 = new ButtonGroup();
@@ -88,6 +98,7 @@ public class PlayPanel extends JPanel
 	private JLabel lblCriticalHit;
 	private JLabel lblDiceValue;
 	private JLabel lblDiceValue_1;
+	private JButton create;
 	//Initialize the character object here
 	//Constructor initializes components and organize them using certain layouts
 	public PlayPanel(StatPanel sPanel)
@@ -96,12 +107,23 @@ public class PlayPanel extends JPanel
 		turn = 0;
 		
 		this.sPanel = sPanel;
-		GridBagLayout gridBagLayout = new GridBagLayout();
+		thisPanel = this;
+		gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 32, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		setLayout(gridBagLayout);
+		
+		cardLayout = new CardLayout();
+		creation = new JPanel();
+		play = new JPanel(gridBagLayout);
+		
+		setLayout(cardLayout);
+		add(creation);
+		
+		create = new JButton("Create");
+		creation.add(create);
+		add(play);
 		
 		//Initialize the class object  
 		Sup = new Character(1);
@@ -113,7 +135,7 @@ public class PlayPanel extends JPanel
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 2;
 		gbc_lblNewLabel.gridy = 2;
-		add(lblNewLabel, gbc_lblNewLabel);
+		play.add(lblNewLabel, gbc_lblNewLabel);
 		
 		//Initialize the Progress bar of batman
 		progressBar_Bat = new JProgressBar();
@@ -122,7 +144,7 @@ public class PlayPanel extends JPanel
 		gbc_progressBar.insets = new Insets(0, 0, 5, 5);
 		gbc_progressBar.gridx = 1;
 		gbc_progressBar.gridy = 2;
-		add(progressBar_Bat, gbc_progressBar);
+		play.add(progressBar_Bat, gbc_progressBar);
 		progressBar_Bat.setStringPainted(true);
 
 		
@@ -136,7 +158,7 @@ public class PlayPanel extends JPanel
 		gbc_progressBar_1.insets = new Insets(0, 0, 5, 5);
 		gbc_progressBar_1.gridx = 3;
 		gbc_progressBar_1.gridy = 2;
-		add(progressBar_Sup, gbc_progressBar_1);
+		play.add(progressBar_Sup, gbc_progressBar_1);
 		progressBar_Sup.setStringPainted(true);
 
 		
@@ -149,7 +171,7 @@ public class PlayPanel extends JPanel
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 1;
 		gbc_lblNewLabel_1.gridy = 3;
-		add(lblNewLabel_1, gbc_lblNewLabel_1);
+		play.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(Sup.heroPic());
@@ -157,7 +179,7 @@ public class PlayPanel extends JPanel
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 3;
 		gbc_lblNewLabel_2.gridy = 3;
-		add(lblNewLabel_2, gbc_lblNewLabel_2);
+		play.add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
 		//Initialize the Label of Batman
 		label = new Label(Bat.heroName());
@@ -165,7 +187,7 @@ public class PlayPanel extends JPanel
 		gbc_label.insets = new Insets(0, 0, 5, 5);
 		gbc_label.gridx = 1;
 		gbc_label.gridy = 4;
-		add(label, gbc_label);
+		play.add(label, gbc_label);
 
 		//Initialize the Label of Superman
 		label_1 = new Label(Sup.heroName());
@@ -173,7 +195,7 @@ public class PlayPanel extends JPanel
 		gbc_label_1.insets = new Insets(0, 0, 5, 5);
 		gbc_label_1.gridx = 3;
 		gbc_label_1.gridy = 4;
-		add(label_1, gbc_label_1);
+		play.add(label_1, gbc_label_1);
 		
 		//Initialize the Radiobutton for weapon 1 of batman
 		rdbtnWeapon = new JRadioButton(Bat.weaponName(1) + " (10 attack, head)");
@@ -182,7 +204,7 @@ public class PlayPanel extends JPanel
 		gbc_rdbtnWeapon.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnWeapon.gridx = 1;
 		gbc_rdbtnWeapon.gridy = 6;
-		add(rdbtnWeapon, gbc_rdbtnWeapon);
+		play.add(rdbtnWeapon, gbc_rdbtnWeapon);
 		
 		//add button to the group of weapon of batman
 		buttonGroup1.add(rdbtnWeapon);
@@ -197,7 +219,7 @@ public class PlayPanel extends JPanel
 		gbc_rdbtnWeapon_3.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnWeapon_3.gridx = 3;
 		gbc_rdbtnWeapon_3.gridy = 6;
-		add(rdbtnWeapon_3, gbc_rdbtnWeapon_3);
+		play.add(rdbtnWeapon_3, gbc_rdbtnWeapon_3);
 		
 		//add the button to the group of weapon of superman
 		buttonGroup2.add(rdbtnWeapon_3);
@@ -212,7 +234,7 @@ public class PlayPanel extends JPanel
 		gbc_rdbtnWeapon_1.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnWeapon_1.gridx = 1;
 		gbc_rdbtnWeapon_1.gridy = 7;
-		add(rdbtnWeapon_1, gbc_rdbtnWeapon_1);
+		play.add(rdbtnWeapon_1, gbc_rdbtnWeapon_1);
 		
 		//add the button to the group of weapon of batman
 		buttonGroup1.add(rdbtnWeapon_1);
@@ -227,7 +249,7 @@ public class PlayPanel extends JPanel
 		gbc_rdbtnWeapon_4.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnWeapon_4.gridx = 3;
 		gbc_rdbtnWeapon_4.gridy = 7;
-		add(rdbtnWeapon_4, gbc_rdbtnWeapon_4);
+		play.add(rdbtnWeapon_4, gbc_rdbtnWeapon_4);
 		
 		//add the button to the group of weapon of superman
 		buttonGroup2.add(rdbtnWeapon_4);
@@ -242,7 +264,7 @@ public class PlayPanel extends JPanel
 		gbc_rdbtnWeapon_2.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnWeapon_2.gridx = 1;
 		gbc_rdbtnWeapon_2.gridy = 8;
-		add(rdbtnWeapon_2, gbc_rdbtnWeapon_2);
+		play.add(rdbtnWeapon_2, gbc_rdbtnWeapon_2);
 
 		//add the button to the group of weapon of batman
 		buttonGroup1.add(rdbtnWeapon_2);
@@ -257,7 +279,7 @@ public class PlayPanel extends JPanel
 		gbc_rdbtnWeapon_5.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnWeapon_5.gridx = 3;
 		gbc_rdbtnWeapon_5.gridy = 8;
-		add(rdbtnWeapon_5, gbc_rdbtnWeapon_5);
+		play.add(rdbtnWeapon_5, gbc_rdbtnWeapon_5);
 
 		//add the button to the group of weapon of superman
 		buttonGroup2.add(rdbtnWeapon_5);
@@ -270,14 +292,14 @@ public class PlayPanel extends JPanel
 		gbc_lblDiceValue.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDiceValue.gridx = 1;
 		gbc_lblDiceValue.gridy = 9;
-		add(lblDiceValue, gbc_lblDiceValue);
+		play.add(lblDiceValue, gbc_lblDiceValue);
 		
 		lblDiceValue_1 = new JLabel("Dice Value : 0");
 		GridBagConstraints gbc_lblDiceValue_1 = new GridBagConstraints();
 		gbc_lblDiceValue_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDiceValue_1.gridx = 3;
 		gbc_lblDiceValue_1.gridy = 9;
-		add(lblDiceValue_1, gbc_lblDiceValue_1);
+		play.add(lblDiceValue_1, gbc_lblDiceValue_1);
 		
 		
 		//Initialize the Batman Block Label 
@@ -286,7 +308,7 @@ public class PlayPanel extends JPanel
 		gbc_label_2.insets = new Insets(0, 0, 5, 5);
 		gbc_label_2.gridx = 1;
 		gbc_label_2.gridy = 10;
-		add(label_2, gbc_label_2);
+		play.add(label_2, gbc_label_2);
 		
 		//Initialize the Superman Block Label
 		lblSupBlock = new Label("Sup Block");
@@ -294,7 +316,7 @@ public class PlayPanel extends JPanel
 		gbc_lblSupBlock.insets = new Insets(0, 0, 5, 5);
 		gbc_lblSupBlock.gridx = 3;
 		gbc_lblSupBlock.gridy = 10;
-		add(lblSupBlock, gbc_lblSupBlock);
+		play.add(lblSupBlock, gbc_lblSupBlock);
 		
 		//Initialize the Radiobutton for head block of batman
 		rdbtnHead = new JRadioButton("Head");
@@ -303,7 +325,7 @@ public class PlayPanel extends JPanel
 		gbc_rdbtnHead.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnHead.gridx = 1;
 		gbc_rdbtnHead.gridy = 11;
-		add(rdbtnHead, gbc_rdbtnHead);
+		play.add(rdbtnHead, gbc_rdbtnHead);
 		buttonGroup3.add(rdbtnHead);
 		rdbtnHead.setActionCommand("1");
 		
@@ -314,7 +336,7 @@ public class PlayPanel extends JPanel
 		gbc_rdbtnHead_1.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnHead_1.gridx = 3;
 		gbc_rdbtnHead_1.gridy = 11;
-		add(rdbtnHead_1, gbc_rdbtnHead_1);
+		play.add(rdbtnHead_1, gbc_rdbtnHead_1);
 		buttonGroup4.add(rdbtnHead_1);
 		rdbtnHead_1.setActionCommand("1");
 		
@@ -325,7 +347,7 @@ public class PlayPanel extends JPanel
 		gbc_rdbtnTorso.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnTorso.gridx = 1;
 		gbc_rdbtnTorso.gridy = 12;
-		add(rdbtnTorso, gbc_rdbtnTorso);
+		play.add(rdbtnTorso, gbc_rdbtnTorso);
 		buttonGroup3.add(rdbtnTorso);
 		rdbtnTorso.setActionCommand("2");
 				
@@ -336,7 +358,7 @@ public class PlayPanel extends JPanel
 		gbc_rdbtnTorso_1.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnTorso_1.gridx = 3;
 		gbc_rdbtnTorso_1.gridy = 12;
-		add(rdbtnTorso_1, gbc_rdbtnTorso_1);
+		play.add(rdbtnTorso_1, gbc_rdbtnTorso_1);
 		buttonGroup4.add(rdbtnTorso_1);
 		rdbtnTorso_1.setActionCommand("2");
 		
@@ -347,7 +369,7 @@ public class PlayPanel extends JPanel
 		gbc_rdbtnLeg.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnLeg.gridx = 1;
 		gbc_rdbtnLeg.gridy = 13;
-		add(rdbtnLeg, gbc_rdbtnLeg);
+		play.add(rdbtnLeg, gbc_rdbtnLeg);
 		buttonGroup3.add(rdbtnLeg);
 		rdbtnLeg.setActionCommand("3");
 		
@@ -358,7 +380,7 @@ public class PlayPanel extends JPanel
 		gbc_rdbtnLeg_1.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnLeg_1.gridx = 3;
 		gbc_rdbtnLeg_1.gridy = 13;
-		add(rdbtnLeg_1, gbc_rdbtnLeg_1);
+		play.add(rdbtnLeg_1, gbc_rdbtnLeg_1);
 		buttonGroup4.add(rdbtnLeg_1);
 		rdbtnLeg_1.setActionCommand("3");
 				
@@ -368,16 +390,18 @@ public class PlayPanel extends JPanel
 		gbc_btnAttack.insets = new Insets(0, 0, 5, 5);
 		gbc_btnAttack.gridx = 2;
 		gbc_btnAttack.gridy = 15;
-		add(btnAttack, gbc_btnAttack);
+		play.add(btnAttack, gbc_btnAttack);
 				
 						
-		//listener for the button
+		//listener for the attack button
 		btnAttack.addActionListener(new ButtonListener());
+		
+		//listener for the create button
+		create.addActionListener(new ButtonListener());
 		
 		//Initialize the Dice Object
 		die = new Dice();  
 	}
-
  
 	//ButtonListener is a listener class that listens to the attack button
 	//Implement the class object of the two character here
@@ -385,134 +409,144 @@ public class PlayPanel extends JPanel
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			//checks the source of the event is the button being pressed
-			Object source = event.getSource();
-			if(source == btnAttack && progressBar_Bat.getValue() > 0 && progressBar_Sup.getValue() > 0)
+			//checks the source of the event is the attack button
+			JButton source = (JButton)event.getSource();
+			if(source == btnAttack)
 			{
-				//String selectedRadioButtonText = getSelectedRadioButton(buttonGroup1).getText();
-				//increment turn counter
-				turn++;
-				
-				//getActionCommand to get a string for the weapon, parseInt to convert to int
-				int batmanWeapon = Integer.parseInt(buttonGroup1.getSelection().getActionCommand());
-				int supermanWeapon = Integer.parseInt(buttonGroup2.getSelection().getActionCommand());
-				//Get the area attacked by the Dice
-				int batAreaAttacked = supermanWeapon;
-				int supAreaAttacked = batmanWeapon;
-
-				int batAreaDefended = Integer.parseInt(buttonGroup3.getSelection().getActionCommand());
-				int supAreaDefended = Integer.parseInt(buttonGroup4.getSelection().getActionCommand());
-				int batAttack;
-				int supAttack;
-				
-				//Get Batman Weapon Choice
-				if (batmanWeapon == 1){
-					batAttack = Bat.getWeapon1();
+				//
+				if(progressBar_Bat.getValue() > 0 && progressBar_Sup.getValue() > 0)
+				{
+					//String selectedRadioButtonText = getSelectedRadioButton(buttonGroup1).getText();
+					//increment turn counter
+					turn++;
+					
+					//getActionCommand to get a string for the weapon, parseInt to convert to int
+					int batmanWeapon = Integer.parseInt(buttonGroup1.getSelection().getActionCommand());
+					int supermanWeapon = Integer.parseInt(buttonGroup2.getSelection().getActionCommand());
+					//Get the area attacked by the Dice
+					int batAreaAttacked = supermanWeapon;
+					int supAreaAttacked = batmanWeapon;
+	
+					int batAreaDefended = Integer.parseInt(buttonGroup3.getSelection().getActionCommand());
+					int supAreaDefended = Integer.parseInt(buttonGroup4.getSelection().getActionCommand());
+					int batAttack;
+					int supAttack;
+					
+					//Get Batman Weapon Choice
+					if (batmanWeapon == 1){
+						batAttack = Bat.getWeapon1();
+					}
+					else if (batmanWeapon == 2){
+						batAttack = Bat.getWeapon2();
+					}
+					else{
+						batAttack = Bat.getWeapon3();
+					}
+					
+					//Calculate Batman Critical Hit Chance
+					batDice = die.getDie1() + die.getDie1();
+					lblDiceValue.setText("Dice Value : "+batDice);
+					if(batDice > 11){
+						batAttack = batAttack + (int)(batAttack*0.2);
+					}
+					
+					//Get Superman Weapon Choice
+					if (supermanWeapon == 1){
+						supAttack = Sup.getWeapon1();
+					}
+					else if (supermanWeapon == 2){
+						supAttack = Sup.getWeapon2();
+					}
+					else{
+						supAttack = Sup.getWeapon3();
+					}
+					
+					//Calculate Superman Critical Health Chance
+					supDice = die.getDie1() + die.getDie1();
+					lblDiceValue_1.setText("Dice Value :"+supDice);
+					if(supDice > 11){
+						supAttack = (supAttack + (int)(supAttack*0.2));
+					}
+					
+					//See if Block is successful for Batman
+					if (batAreaAttacked == batAreaDefended){
+						supAttack = 0;
+					}
+					
+					//See if Block is successful for Superman 
+					if(supAreaAttacked == supAreaDefended){
+						batAttack = 0;
+					}
+					
+					//Get the update health after the Attack
+					int supHealth = Sup.getHealth() - batAttack;
+					int batHealth = Bat.getHealth() - supAttack;
+					
+					//Update the Health of the Character  
+					Sup.updateHealth(supHealth);
+					Bat.updateHealth(batHealth);
+					
+					// if condition to stop the game
+					System.out.println("BatHealth : "+batHealth);
+					System.out.println("SupHealth : "+supHealth);
+	
+					//Update the progress bar of the characters 
+					progressBar_Bat.setValue(batHealth);
+					progressBar_Sup.setValue(supHealth);
+					
+					//call updateStats to update stats with the latest attack.  Doesn't update most turns.
+					sPanel.updateStats(0, 1, batAttack, supAttack, batAreaAttacked - 1, supAreaAttacked - 1, batHealth + supAttack, supHealth + batAttack, batDice, supDice);
+					
+					//test whether we have a draw or a winner
+					if(batHealth <= 0 && supHealth <=0){
+						System.out.println("Its a draw");
+						lblNewLabel.setText("Draw");
+					}
+					else if(batHealth <= 0 && supHealth > 0){
+						System.out.print("Superman Wins");
+						lblNewLabel.setText("Superman Wins");
+					}
+					else if(batHealth >0 && supHealth <=0){
+						System.out.print("Batman Wins");
+						lblNewLabel.setText("Batman Wins");
+					}
+					
 				}
-				else if (batmanWeapon == 2){
-					batAttack = Bat.getWeapon2();
+				//Reached when reset occurs
+				else
+				{
+					//Reset the Winner or Draw Label
+					lblNewLabel.setText("");
+					
+					// Reset Winner Image Label
+					//lblWinner.setIcon(null);
+					
+					//Reset Dice Value for both the Player
+					lblDiceValue_1.setText("Dice Value : 0");
+					lblDiceValue.setText("Dice Value : 0");
+					
+	
+					
+					//Update the health of the character 
+					Sup.updateHealth(100);
+					Bat.updateHealth(100);
+					
+					//Update the turn panel
+					sPanel.updateMostTurns(0,1,turn);
+					
+					//Reset the progress bar
+					progressBar_Bat.setValue(100);
+					progressBar_Sup.setValue(100);
+					
+					//Reset the turn
+					turn = 0;
 				}
-				else{
-					batAttack = Bat.getWeapon3();
-				}
-				
-				//Calculate Batman Critical Hit Chance
-				batDice = die.getDie1() + die.getDie1();
-				lblDiceValue.setText("Dice Value : "+batDice);
-				if(batDice > 11){
-					batAttack = batAttack + (int)(batAttack*0.2);
-				}
-				
-				//Get Superman Weapon Choice
-				if (supermanWeapon == 1){
-					supAttack = Sup.getWeapon1();
-				}
-				else if (supermanWeapon == 2){
-					supAttack = Sup.getWeapon2();
-				}
-				else{
-					supAttack = Sup.getWeapon3();
-				}
-				
-				//Calculate Superman Critical Health Chance
-				supDice = die.getDie1() + die.getDie1();
-				lblDiceValue_1.setText("Dice Value :"+supDice);
-				if(supDice > 11){
-					supAttack = (supAttack + (int)(supAttack*0.2));
-				}
-				
-				//See if Block is successful for Batman
-				if (batAreaAttacked == batAreaDefended){
-					supAttack = 0;
-				}
-				
-				//See if Block is successful for Superman 
-				if(supAreaAttacked == supAreaDefended){
-					batAttack = 0;
-				}
-				
-				//Get the update health after the Attack
-				int supHealth = Sup.getHealth() - batAttack;
-				int batHealth = Bat.getHealth() - supAttack;
-				
-				//Update the Health of the Character  
-				Sup.updateHealth(supHealth);
-				Bat.updateHealth(batHealth);
-				
-				// if condition to stop the game
-				System.out.println("BatHealth : "+batHealth);
-				System.out.println("SupHealth : "+supHealth);
-
-				//Update the progress bar of the characters 
-				progressBar_Bat.setValue(batHealth);
-				progressBar_Sup.setValue(supHealth);
-				
-				//call updateStats to update stats with the latest attack.  Doesn't update most turns.
-				sPanel.updateStats(0, 1, batAttack, supAttack, batAreaAttacked - 1, supAreaAttacked - 1, batHealth + supAttack, supHealth + batAttack, batDice, supDice);
-				
-				//test whether we have a draw or a winner
-				if(batHealth <= 0 && supHealth <=0){
-					System.out.println("Its a draw");
-					lblNewLabel.setText("Draw");
-				}
-				else if(batHealth <= 0 && supHealth > 0){
-					System.out.print("Superman Wins");
-					lblNewLabel.setText("Superman Wins");
-				}
-				else if(batHealth >0 && supHealth <=0){
-					System.out.print("Batman Wins");
-					lblNewLabel.setText("Batman Wins");
-				}
-				
 			}
-			//Reached when reset occurs
-			else
+			else if(source == create)
 			{
-				//Reset the Winner or Draw Label
-				lblNewLabel.setText("");
+				//Do stuff to set up the other panel
 				
-				// Reset Winner Image Label
-				//lblWinner.setIcon(null);
-				
-				//Reset Dice Value for both the Player
-				lblDiceValue_1.setText("Dice Value : 0");
-				lblDiceValue.setText("Dice Value : 0");
-				
-
-				
-				//Update the health of the character 
-				Sup.updateHealth(100);
-				Bat.updateHealth(100);
-				
-				//Update the turn panel
-				sPanel.updateMostTurns(0,1,turn);
-				
-				//Reset the progress bar
-				progressBar_Bat.setValue(100);
-				progressBar_Sup.setValue(100);
-				
-				//Reset the turn
-				turn = 0;
+				cardLayout.next(thisPanel);
 			}
 		}
 	} 
