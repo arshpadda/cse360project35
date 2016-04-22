@@ -13,7 +13,7 @@ public class Project extends JApplet
 {
 	public Project() {
 	}
-	private int APPLET_WIDTH = 850, APPLET_HEIGHT = 650;
+	private int APPLET_WIDTH = 850, APPLET_HEIGHT = 675;
 	private JTabbedPane tPane;
 	private PlayPanel playPanel;
 	private StatPanel statPanel;
