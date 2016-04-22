@@ -401,6 +401,9 @@ public class PlayPanel extends JPanel
 		gbc_btnAttack.gridy = 14;
 		play.add(btnAttack, gbc_btnAttack);
 		
+		//listener for the attack button
+		btnAttack.addActionListener(new ButtonListener());
+		
 		//listener for the create button
 		create.addActionListener(new ButtonListener());
 		
