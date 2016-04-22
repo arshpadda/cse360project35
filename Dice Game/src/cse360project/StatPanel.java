@@ -7,8 +7,10 @@ package cse360project;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 import javax.swing.event.*;
+
 import java.util.*;
 /**
  * Panel is a tab on the applet that shows the information of the Stats.
@@ -30,21 +32,26 @@ public class StatPanel extends JPanel
 	//contains each character's stats
 	private JTextArea textArea;
 	private JTextArea textArea_1;
-	private JButton button;
+	
+	//unused button
+	//private JButton button;
 	
 	//Constructor initializes each component and arrange them using layouts
 	public StatPanel(int numChars, int numStats)
 	{
-		//
+		//stats object containing the stats information to be displayed
 		stats = new Stats(numChars, numStats);
 		
+		//girdBagLayout is the layout used for the panel
 		gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		//set the layout for the StatPanel
 		setLayout(gridBagLayout);
 		
+		//left comboBox, contains hero choices for stats to be displayed
 		comboBox = new JComboBox();
 		comboBox.setBackground(Color.LIGHT_GRAY);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Batman", "Superman"}));
@@ -57,9 +64,10 @@ public class StatPanel extends JPanel
 		gbc_comboBox.gridy = 1;
 		add(comboBox, gbc_comboBox);
 		
-		//listeners for the JComboBoxes
+		//listeners for the left JComboBox
 		comboBox.addActionListener(new ComboListener());
 		
+		//right JComboBox, same function as the left
 		comboBox_1 = new JComboBox();
 		comboBox_1.setBackground(Color.LIGHT_GRAY);
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Batman", "Superman"}));
@@ -73,6 +81,7 @@ public class StatPanel extends JPanel
 		add(comboBox_1, gbc_comboBox_1);
 		comboBox_1.addActionListener(new ComboListener());
 		
+		//rigidArea just to create some space
 		rigidArea = Box.createRigidArea(new Dimension(20, 20));
 		GridBagConstraints gbc_rigidArea = new GridBagConstraints();
 		gbc_rigidArea.insets = new Insets(0, 0, 5, 5);
@@ -80,6 +89,7 @@ public class StatPanel extends JPanel
 		gbc_rigidArea.gridy = 2;
 		add(rigidArea, gbc_rigidArea);
 		
+		//left text area, contains information about the hero chosen by the left JComboBox
 		textArea = new JTextArea();
 		textArea.setBackground(UIManager.getColor("Button.background"));
 		textArea.setEditable(false);
@@ -91,9 +101,11 @@ public class StatPanel extends JPanel
 		gbc_textArea.gridy = 3;
 		add(textArea, gbc_textArea);
 		
+		//set the text to the default, information about batman
 		textArea.setText(stats.printChar(0));
 		
 		/*
+		 * Button not used currently
 		button = new JButton("Test");
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.insets = new Insets(0, 0, 5, 5);
@@ -102,6 +114,7 @@ public class StatPanel extends JPanel
 		add(button, gbc_button);
 		*/
 		
+		//right text area, same function as the left text area
 		textArea_1 = new JTextArea();
 		textArea_1.setBackground(UIManager.getColor("Button.background"));
 		textArea_1.setEditable(false);
@@ -112,12 +125,12 @@ public class StatPanel extends JPanel
 		gbc_textArea_1.gridx = 6;
 		gbc_textArea_1.gridy = 3;
 		add(textArea_1, gbc_textArea_1);
+		//set the text to the default, information about superman
 		textArea_1.setText(stats.printChar(1));
 		
 		//listener for button
 		//button.addActionListener(new ButtonListener());
 	}	
-
 	
 	/**
 	 * Update the statistics for two characters, parameters are the attack's details
@@ -161,6 +174,7 @@ public class StatPanel extends JPanel
 	 */
 	private void updateDisplay()
 	{
+		//refresh the information in the text areas with calls from the stats object
 		textArea.setText(stats.printChar(stats.nameToInt((String)comboBox.getSelectedItem())));
 		textArea_1.setText(stats.printChar(stats.nameToInt((String)comboBox_1.getSelectedItem())));
 	}
@@ -171,6 +185,7 @@ public class StatPanel extends JPanel
 	 */
 	public void writeStats()
 	{
+		//call the stats class's method
 		stats.updateFile();
 	}
 	
@@ -179,7 +194,7 @@ public class StatPanel extends JPanel
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			//checks that submit button caused event
+			//checks which comboBox caused the event
 			JComboBox source = (JComboBox)event.getSource();
 			if(source == comboBox)
 			{
@@ -193,7 +208,8 @@ public class StatPanel extends JPanel
 		}
 	}
 	
-	/*private class ButtonListener implements ActionListener
+	/*In case a button is used here ever
+	 * private class ButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
 		{
