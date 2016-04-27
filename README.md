@@ -1,5 +1,13 @@
 # Batman vs Superman
 
+CSE 360 Spring 2016 Team 35
+
+•	Alex Aguayo(akaguayo)
+•	Vishal Chilka(vishalc10)
+•	Shweta Choudhary(shwetachoudhary06)
+•	Alexander Loizou(Ulrich282)
+•	Arsh Padda(arshpadda)
+
 
 To run the game, run the Project.java file.
 
