@@ -805,7 +805,7 @@ public class PlayPanel extends JPanel
 					char1Dice = die.getDie1() + die.getDie1();
 					lblDiceValue.setText("Dice Value : "+char1Dice);
 					if(char1Dice > 11){
-						char1Attack = char1Attack + (int)(char1Attack*0.2);
+						char1Attack = char1Attack + char1Attack*2;
 					}
 					
 					//Get character2 Weapon Choice
