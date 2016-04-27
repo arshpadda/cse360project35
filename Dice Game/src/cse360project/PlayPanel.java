@@ -727,7 +727,7 @@ public class PlayPanel extends JPanel
 		rdbtnWeapon_1.setText(char1.weaponName(2) + " (8 attack, torso)");
 		rdbtnWeapon_2.setText(char1.weaponName(3) + " (5 attack, legs)");
 		//block label
-		lblChar1Block.setText(char1.heroName() + " Block");
+		lblChar1Block.setText(char1.heroName() + " Shield");
 		
 		//now char2
 		//name
@@ -739,7 +739,7 @@ public class PlayPanel extends JPanel
 		rdbtnWeapon_4.setText(char2.weaponName(2) + " (8 attack, torso)");
 		rdbtnWeapon_5.setText(char2.weaponName(3) + " (5 attack, legs)");
 		//block label
-		lblChar2Block.setText(char2.heroName() + " Block");
+		lblChar2Block.setText(char2.heroName() + " Shield");
 		
 	}
 	
