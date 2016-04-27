@@ -602,7 +602,7 @@ public class PlayPanel extends JPanel
 		
 		
 		//Initialize the character1 Block Label 
-		lblChar1Block = new Label(char1.heroName() + " Block");
+		lblChar1Block = new Label(char1.heroName() + " Shield");
 		GridBagConstraints gbc_lblChar1Block = new GridBagConstraints();
 		gbc_lblChar1Block.insets = new Insets(0, 0, 5, 5);
 		gbc_lblChar1Block.gridx = 1;
@@ -610,7 +610,7 @@ public class PlayPanel extends JPanel
 		play.add(lblChar1Block, gbc_lblChar1Block);
 		
 		//Initialize the character2 Block Label
-		lblChar2Block = new Label(char2.heroName() + " Block");
+		lblChar2Block = new Label(char2.heroName() + " Shield");
 		GridBagConstraints gbc_lblChar2Block = new GridBagConstraints();
 		gbc_lblChar2Block.insets = new Insets(0, 0, 5, 5);
 		gbc_lblChar2Block.gridx = 3;
@@ -727,7 +727,7 @@ public class PlayPanel extends JPanel
 		rdbtnWeapon_1.setText(char1.weaponName(2) + " (8 attack, torso)");
 		rdbtnWeapon_2.setText(char1.weaponName(3) + " (5 attack, legs)");
 		//block label
-		lblChar1Block.setText(char1.heroName() + " Block");
+		lblChar1Block.setText(char1.heroName() + " Shield");
 		
 		//now char2
 		//name
@@ -739,7 +739,7 @@ public class PlayPanel extends JPanel
 		rdbtnWeapon_4.setText(char2.weaponName(2) + " (8 attack, torso)");
 		rdbtnWeapon_5.setText(char2.weaponName(3) + " (5 attack, legs)");
 		//block label
-		lblChar2Block.setText(char2.heroName() + " Block");
+		lblChar2Block.setText(char2.heroName() + " Shield");
 		
 	}
 	
