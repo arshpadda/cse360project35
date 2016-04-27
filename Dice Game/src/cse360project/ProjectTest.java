@@ -1,10 +1,11 @@
-package cse360project;
+
+//package cse360project;
 
 /**
  * @author Team35
  * @version April 15, 2016
  */
-
+/*
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -103,3 +104,4 @@ public class ProjectTest {
 		assertEquals(superTest.getHealth(), 75);
 	}
 }
+*/
