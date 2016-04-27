@@ -5,7 +5,7 @@ import javax.swing.*;
 /**
  * Abstract class for implementing the character of the game
  * @author Team35
- * @version April 27, 2016
+ * @version April 29, 2016
  */
 
 public class Character {
