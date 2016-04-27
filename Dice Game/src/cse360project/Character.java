@@ -34,7 +34,12 @@ public class Character {
 	ImageIcon[] pictures = {new ImageIcon(PlayPanel.class.getResource("/cse360project/Batman1.jpg")),
 			new ImageIcon(PlayPanel.class.getResource("/cse360project/Superman.jpg")),
 			new ImageIcon(PlayPanel.class.getResource("/cse360project/WonderWoman.jpg")),
-			new ImageIcon(PlayPanel.class.getResource("/cse360project/Flash.jpg"))};
+			new ImageIcon(PlayPanel.class.getResource("/cse360project/Flash.jpg")),
+			new ImageIcon(),
+			new ImageIcon(),
+			new ImageIcon(),
+			new ImageIcon(),
+			};
 	
 	//Constructor that determines which character you are.
 	Character(int characterSelect){
