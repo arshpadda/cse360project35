@@ -140,7 +140,7 @@ public class Stats
 	 * @param name search for the name in the array
 	 * @return the integer represent the name, also the index in the array
 	 */
-	int nameToInt(String name)
+	public int nameToInt(String name)
 	{
 		//search for the name in the characters array
 		int nameIndex = 0;
@@ -267,7 +267,7 @@ public class Stats
 		output = output + "Average Damage:\t"				 + decimalFormat.format((float)stats[4][charInt]/stats[3][charInt]) + "\n";
 		output = output + "Damage Taken:\t"					 + stats[5][charInt] + "\n";
 		output = output + "Blocks:\t\t"						 + stats[11][charInt] + "\n";
-		output = output + "Block Rate %:\t\t"					 + decimalFormat.format((float)100*stats[11][charInt]/stats[3][charInt]) + "\n";
+		output = output + "Block Rate %:\t\t"				 + decimalFormat.format((float)100*stats[11][charInt]/stats[3][charInt]) + "\n";
 		output = output + "Head Hits:\t\t"					 + stats[6][charInt] + "\n";
 		output = output + "Body Hits:\t\t"					 + stats[7][charInt] + "\n";
 		output = output + "Leg Hits:\t\t"		 			 + stats[8][charInt] + "\n";
@@ -275,8 +275,8 @@ public class Stats
 		output = output + "Most Turns:\t\t"					 + stats[10][charInt] + "\n";
 		
 		//add temporary stats
-		output = output + "Tournament Damage Dealt:\t"	 + tempDamageDone[charInt] + "\n";
-		output = output + "Tournament Damage Taken:\t"	 + tempDamageDone[charInt] + "\n";
+		output = output + "Tournament Damage Dealt:\t"		 + tempDamageDone[charInt] + "\n";
+		output = output + "Tournament Damage Taken:\t"		 + tempDamageDone[charInt] + "\n";
 		
 		return output;
 	}

@@ -15,16 +15,20 @@ public class Character {
 	int weapon3 = 6;
 	int hero;
 	
-	//String array that holds hero names
-	String[] heroNames = {"Batman", "Superman", "Wonder Woman", "Flash"};
+	//includes placeholders
+	static String[] heroNames = {"Batman", "Superman", "Wonder Woman", "Flash", "5", "6", "7", "8"};
 
 	//String array that holds weapons names 
-	//[0][] = Batman, [1][] = Superman, [2][] = Wonder Woman, [3][] = Flash
+	//[0][] = Batman, [1][] = Superman, [2][] = Wonder Woman, [3][] = Flash //\\4 are temporary placeholders//\\
 	String[][] weapons = new String[][]{
 			{"Bataraang","Kick","Grappling Hook"},
 			{"Heat Vision","Flying Punch","Ice Breath"},
 			{"Sword Slice","Lasso Grab","Shield Bash"},
-			{"Sonic Punch","Lightning Kick","Quick Step"}
+			{"Sonic Punch","Lightning Kick","Quick Step"},
+			{"5 1","5 2","5 3"},
+			{"6 1","6 2","6 3"},
+			{"7 1","7 2","7 3"},
+			{"8 1","8 2","8 3"}
 	};
 	
 	ImageIcon[] pictures = {new ImageIcon(PlayPanel.class.getResource("/cse360project/Batman1.jpg")),

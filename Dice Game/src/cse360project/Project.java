@@ -9,6 +9,7 @@ package cse360project;
 import javax.swing.*;
 import java.util.*;
 import java.awt.*;
+
 public class Project extends JApplet
 {
 	public Project() {
