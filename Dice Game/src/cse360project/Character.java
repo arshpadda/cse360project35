@@ -15,30 +15,29 @@ public class Character {
 	int weapon3 = 6;
 	int hero;
 	
-	//includes placeholders
-	static String[] heroNames = {"Batman", "Superman", "Wonder Woman", "Flash", "5", "6", "7", "8"};
+	static String[] heroNames = {"Batman", "Superman", "Wonder Woman", "Flash", "Green Lantern", "Aquaman", "Cyborg", "Hawkman"};
 
 	//String array that holds weapons names 
-	//[0][] = Batman, [1][] = Superman, [2][] = Wonder Woman, [3][] = Flash //\\4 are temporary placeholders//\\
+	//[0][]=Batman, [1][]=Superman, [2][]=Wonder Woman, [3][]=Flash, [4][]=Green Lantern, [5][]=Aquaman,[6][]=Cyborg,[7][]=Hawkman 
 	String[][] weapons = new String[][]{
 			{"Bataraang","Kick","Grappling Hook"},
 			{"Heat Vision","Flying Punch","Ice Breath"},
 			{"Sword Slice","Lasso Grab","Shield Bash"},
 			{"Sonic Punch","Lightning Kick","Quick Step"},
-			{"5 1","5 2","5 3"},
-			{"6 1","6 2","6 3"},
-			{"7 1","7 2","7 3"},
-			{"8 1","8 2","8 3"}
+			{"Energy Beam","Ring Construct","Fist Construct"},
+			{"Trident Throw","Shark Attack","Whirpool"},
+			{"Sonic Disruptor","Shock","Metal Fist"},
+			{"Mace Swing","Heatbutt","Katar Attack"}
 	};
 	
 	ImageIcon[] pictures = {new ImageIcon(PlayPanel.class.getResource("/cse360project/Batman1.jpg")),
 			new ImageIcon(PlayPanel.class.getResource("/cse360project/Superman.jpg")),
 			new ImageIcon(PlayPanel.class.getResource("/cse360project/WonderWoman.jpg")),
 			new ImageIcon(PlayPanel.class.getResource("/cse360project/Flash.jpg")),
-			new ImageIcon(),
-			new ImageIcon(),
-			new ImageIcon(),
-			new ImageIcon(),
+			new ImageIcon(PlayPanel.class.getResource("/cse360project/GreenLantern.jpg")),
+			new ImageIcon(PlayPanel.class.getResource("/cse360project/Aquaman.jpg")),
+			new ImageIcon(PlayPanel.class.getResource("/cse360project/Cyborg.jpg")),
+			new ImageIcon(PlayPanel.class.getResource("/cse360project/Hawkman.jpg")),
 			};
 	
 	//Constructor that determines which character you are.
