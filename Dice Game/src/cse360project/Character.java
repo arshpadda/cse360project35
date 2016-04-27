@@ -5,7 +5,7 @@ import javax.swing.*;
 /**
  * Abstract class for implementing the character of the game
  * @author Team35
- * @version April 20, 2016
+ * @version April 26, 2016
  */
 
 public class Character {
@@ -15,6 +15,7 @@ public class Character {
 	int weapon3 = 6;
 	int hero;
 	
+	//String array that holds hero names
 	String[] heroNames = {"Batman", "Superman", "Wonder Woman", "Flash"};
 
 	//String array that holds weapons names 
@@ -29,6 +30,7 @@ public class Character {
 	ImageIcon[] pictures = {new ImageIcon(PlayPanel.class.getResource("/cse360project/Batman1.jpg")),
 			new ImageIcon(PlayPanel.class.getResource("/cse360project/Superman.jpg"))};
 	
+	//Constructor that determines which character you are.
 	Character(int characterSelect){
 		hero = characterSelect;
 	}
