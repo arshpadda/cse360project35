@@ -2,7 +2,7 @@ package cse360project;
 
 /**
  * @author Team35
- * @version April 29, 2016
+ * @version April 15, 2016
  */
 
 
@@ -195,7 +195,7 @@ public class PlayPanel extends JPanel
 		//array of JCheckBox, used to select characters
 		checkBox = new JCheckBox[8];
 		//initializing each JCheckBox, and adding to the panel
-		checkBox[0] = new JCheckBox("Batman");
+		checkBox[0] = new JCheckBox(Character.heroNames[0]);
 		GridBagConstraints gbc_checkBox1 = new GridBagConstraints();
 		gbc_checkBox1.anchor = GridBagConstraints.WEST;
 		gbc_checkBox1.insets = new Insets(0, 0, 5, 5);
@@ -203,7 +203,7 @@ public class PlayPanel extends JPanel
 		gbc_checkBox1.gridy = 14;
 		creation.add(checkBox[0], gbc_checkBox1);
 		
-		checkBox[2] = new JCheckBox("Wonder Woman");
+		checkBox[2] = new JCheckBox(Character.heroNames[2]);
 		GridBagConstraints gbc_checkBox3 = new GridBagConstraints();
 		gbc_checkBox3.anchor = GridBagConstraints.WEST;
 		gbc_checkBox3.insets = new Insets(0, 0, 5, 5);
@@ -211,7 +211,7 @@ public class PlayPanel extends JPanel
 		gbc_checkBox3.gridy = 14;
 		creation.add(checkBox[2], gbc_checkBox3);
 		
-		checkBox[4] = new JCheckBox("5");
+		checkBox[4] = new JCheckBox(Character.heroNames[4]);
 		GridBagConstraints gbc_checkBox5 = new GridBagConstraints();
 		gbc_checkBox5.fill = GridBagConstraints.HORIZONTAL;
 		gbc_checkBox5.insets = new Insets(0, 0, 5, 5);
@@ -219,7 +219,7 @@ public class PlayPanel extends JPanel
 		gbc_checkBox5.gridy = 14;
 		creation.add(checkBox[4], gbc_checkBox5);
 		
-		checkBox[6] = new JCheckBox("7");
+		checkBox[6] = new JCheckBox(Character.heroNames[6]);
 		GridBagConstraints gbc_checkBox7 = new GridBagConstraints();
 		gbc_checkBox7.fill = GridBagConstraints.HORIZONTAL;
 		gbc_checkBox7.insets = new Insets(0, 0, 5, 5);
@@ -227,7 +227,7 @@ public class PlayPanel extends JPanel
 		gbc_checkBox7.gridy = 14;
 		creation.add(checkBox[6], gbc_checkBox7);
 		
-		checkBox[1] = new JCheckBox("Superman");
+		checkBox[1] = new JCheckBox(Character.heroNames[1]);
 		GridBagConstraints gbc_checkBox2 = new GridBagConstraints();
 		gbc_checkBox2.anchor = GridBagConstraints.WEST;
 		gbc_checkBox2.insets = new Insets(0, 0, 5, 5);
@@ -235,7 +235,7 @@ public class PlayPanel extends JPanel
 		gbc_checkBox2.gridy = 15;
 		creation.add(checkBox[1], gbc_checkBox2);
 		
-		checkBox[3] = new JCheckBox("Flash");
+		checkBox[3] = new JCheckBox(Character.heroNames[0]);
 		GridBagConstraints gbc_checkBox4 = new GridBagConstraints();
 		gbc_checkBox4.anchor = GridBagConstraints.WEST;
 		gbc_checkBox4.insets = new Insets(0, 0, 5, 5);
@@ -243,7 +243,7 @@ public class PlayPanel extends JPanel
 		gbc_checkBox4.gridy = 15;
 		creation.add(checkBox[3], gbc_checkBox4);
 		
-		checkBox[5] = new JCheckBox("6");
+		checkBox[5] = new JCheckBox(Character.heroNames[5]);
 		GridBagConstraints gbc_checkBox6 = new GridBagConstraints();
 		gbc_checkBox6.fill = GridBagConstraints.HORIZONTAL;
 		gbc_checkBox6.insets = new Insets(0, 0, 5, 5);
@@ -251,7 +251,7 @@ public class PlayPanel extends JPanel
 		gbc_checkBox6.gridy = 15;
 		creation.add(checkBox[5], gbc_checkBox6);
 		
-		checkBox[7] = new JCheckBox("8");
+		checkBox[7] = new JCheckBox(Character.heroNames[7]);
 		GridBagConstraints gbc_checkBox8 = new GridBagConstraints();
 		gbc_checkBox8.fill = GridBagConstraints.HORIZONTAL;
 		gbc_checkBox8.insets = new Insets(0, 0, 5, 5);
@@ -805,7 +805,7 @@ public class PlayPanel extends JPanel
 					char1Dice = die.getDie1() + die.getDie1();
 					lblDiceValue.setText("Dice Value : "+char1Dice);
 					if(char1Dice > 11){
-						char1Attack = char1Attack + char1Attack*2;
+						char1Attack = char1Attack*2;
 					}
 					
 					//Get character2 Weapon Choice
@@ -823,7 +823,7 @@ public class PlayPanel extends JPanel
 					char2Dice = die.getDie1() + die.getDie1();
 					lblDiceValue_1.setText("Dice Value :"+char2Dice);
 					if(char2Dice > 11){
-						char2Attack = (char2Attack + (int)(char2Attack*0.2));
+						char2Attack = char2Attack*2;
 					}
 					
 					//See if Block is successful for character1
@@ -853,7 +853,7 @@ public class PlayPanel extends JPanel
 					progressBar_char2.setValue(char2Health);
 					
 					//call updateStats to update stats with the latest attack.  Doesn't update most turns.
-					sPanel.updateStats(0, 1, char1Attack, char2Attack, char1AreaAttacked - 1, char2AreaAttacked - 1, char1Health + char2Attack, char2Health + char1Attack, char1Dice, char2Dice);
+					sPanel.updateStats(char1.getHeroNum(), char2.getHeroNum(), char1Attack, char2Attack, char1AreaAttacked - 1, char2AreaAttacked - 1, char1Health + char2Attack, char2Health + char1Attack, char1Dice, char2Dice);
 					
 					//test whether we have a draw or a winner
 					if(char1Health <= 0 && char2Health <=0){
@@ -1022,6 +1022,7 @@ public class PlayPanel extends JPanel
 					tournament[12].setText("Finalist");
 					tournament[13].setText("Finalist");
 					tournament[14].setText("Champion");
+					match = 1;
 					//go back to the create screen
 					cardLayout.first(thisPanel);
 				}

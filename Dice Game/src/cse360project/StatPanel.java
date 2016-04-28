@@ -54,7 +54,7 @@ public class StatPanel extends JPanel
 		//left comboBox, contains hero choices for stats to be displayed
 		comboBox = new JComboBox();
 		comboBox.setBackground(Color.LIGHT_GRAY);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Batman", "Superman"}));
+		comboBox.setModel(new DefaultComboBoxModel(Character.heroNames));
 		comboBox.setSelectedIndex(0);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.anchor = GridBagConstraints.SOUTH;
@@ -70,7 +70,7 @@ public class StatPanel extends JPanel
 		//right JComboBox, same function as the left
 		comboBox_1 = new JComboBox();
 		comboBox_1.setBackground(Color.LIGHT_GRAY);
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Batman", "Superman"}));
+		comboBox_1.setModel(new DefaultComboBoxModel(Character.heroNames));
 		comboBox_1.setSelectedIndex(1);
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
 		gbc_comboBox_1.anchor = GridBagConstraints.SOUTH;

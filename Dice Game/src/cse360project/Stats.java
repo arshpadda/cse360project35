@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 
@@ -21,12 +22,12 @@ public class Stats
 	row index, stat:			column index, character:
 	wins		 = 0			batman 		= 0
 	losses		 = 1			superman 	= 1
-	draws		 = 2
-	
-	turns		 = 3
-	damageDone	 = 4
-	damageTaken	 = 5
-	blocks		 = 11
+	draws		 = 2			wonder woman= 2
+								flash		= 3
+	turns		 = 3			5			= 4
+	damageDone	 = 4			6			= 5
+	damageTaken	 = 5			7			= 6
+	blocks		 = 11			8			= 7
 	
 	hitHead		 = 6
 	hitChest	 = 7
@@ -58,7 +59,7 @@ public class Stats
 	{
 		//String array contains the names of characters
 		//for now, initialize array here, rather than read from file
-		characters = new String[] {"Batman","Superman"};
+		characters = Character.heroNames;
 		
 		//initialize temporary stats to 0
 		tempDamageDone = new int[numChars];
@@ -125,9 +126,10 @@ public class Stats
 			}
 		}
 		//catches might need more work
-		catch(FileNotFoundException error)
+		catch(NoSuchElementException error)
 		{
-			error.printStackTrace();			
+			File file = new File("statistics.txt");
+			file.delete();			
 		} 
 		catch (IOException error)
 		{
