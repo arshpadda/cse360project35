@@ -235,7 +235,7 @@ public class PlayPanel extends JPanel
 		gbc_checkBox2.gridy = 15;
 		creation.add(checkBox[1], gbc_checkBox2);
 		
-		checkBox[3] = new JCheckBox(Character.heroNames[0]);
+		checkBox[3] = new JCheckBox(Character.heroNames[3]);
 		GridBagConstraints gbc_checkBox4 = new GridBagConstraints();
 		gbc_checkBox4.anchor = GridBagConstraints.WEST;
 		gbc_checkBox4.insets = new Insets(0, 0, 5, 5);
@@ -896,12 +896,12 @@ public class PlayPanel extends JPanel
 					char1.updateHealth(100);
 					
 					//Update the most turns statistic
-					sPanel.updateMostTurns(0,1,turn);
+					sPanel.updateMostTurns(char1.getHeroNum(),char2.getHeroNum(),turn);
 					
 					//Reset the turn variable
 					turn = 0;
 					
-					//only reset the health bar if the game is a draw
+					//reset the health bar if the game is a draw
 					if(progressBar_char1.getValue() <= 0 && progressBar_char2.getValue() <= 0)
 					{
 						//Reset the progress bar
@@ -923,6 +923,17 @@ public class PlayPanel extends JPanel
 						//increment matches then change to tournament screen
 						match++;
 						cardLayout.previous(thisPanel);
+						
+						//reset health to full
+						progressBar_char1.setValue(100);
+						progressBar_char2.setValue(100);
+					}
+					//case where it isn't a draw or tournament, 2 player match has ended
+					else
+					{
+						progressBar_char1.setValue(100);
+						progressBar_char2.setValue(100);
+						cardLayout.first(thisPanel);
 					}
 					//change the attack button text back to attack, from continue
 					btnAttack.setText("Attack");
@@ -966,7 +977,11 @@ public class PlayPanel extends JPanel
 					{
 						//make the lowest row the names of the characters
 						for(int index = 0; index <= 7; index++)
+						{
 							tournament[index].setText(Character.heroNames[index]);
+							//make the bottom row visible, if it isn't already
+							tournament[index].setVisible(true);
+						}
 					}
 					//after setup is complete, move to the tournament screen
 					cardLayout.next(thisPanel);
@@ -974,6 +989,7 @@ public class PlayPanel extends JPanel
 				//skip tournament screen if only two players
 				else
 				{
+					tournamentInProgress = false;
 					int char1Int = 0;
 					int char2Int = 0;
 					//find which two characters are picked
