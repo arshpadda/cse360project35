@@ -3,7 +3,7 @@ package cse360project;
 import javax.swing.*;
 
 /**
- * Abstract class for implementing the character of the game
+ * Class for implementing the characters of the game
  * @author Team35
  * @version April 29, 2016
  */
@@ -15,6 +15,7 @@ public class Character {
 	int weapon3 = 6;		// Attack Power of weapon 3
 	int hero;				// hero Selector Number
 	
+	//String array that holds all of the playable heroes names
 	static String[] heroNames = {"Batman", "Superman", "Wonder Woman", "Flash", "Green Lantern", "Aquaman", "Cyborg", "Hawkman"};
 
 	//String array that holds weapons names 
@@ -30,6 +31,7 @@ public class Character {
 			{"Mace Swing","Heatbutt","Katar Attack"}
 	};
 	
+	//ImageIcon array that holds all of the characters pictures
 	ImageIcon[] pictures = {new ImageIcon(PlayPanel.class.getResource("/cse360project/Batman1.jpg")),
 			new ImageIcon(PlayPanel.class.getResource("/cse360project/Superman.jpg")),
 			new ImageIcon(PlayPanel.class.getResource("/cse360project/WonderWoman.jpg")),
@@ -39,7 +41,6 @@ public class Character {
 			new ImageIcon(PlayPanel.class.getResource("/cse360project/Cyborg.jpg")),
 			new ImageIcon(PlayPanel.class.getResource("/cse360project/Hawkman.jpg")),
 			};		
-	// Images of the SuperHero 
 	
 	//Constructor that determines which character you are.
 	Character(int characterSelect){
@@ -81,7 +82,7 @@ public class Character {
 		return heroNames[hero];
 	}
 	
-	// Return the pic of the hero selected
+	// Return the picture of the hero selected
 	ImageIcon heroPic(){
 		return pictures[hero];
 	}

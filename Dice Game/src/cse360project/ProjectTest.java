@@ -7,6 +7,9 @@ package cse360project;
  */
 
 import static org.junit.Assert.*;
+
+import javax.swing.*;
+
 import org.junit.Test;
 
 
@@ -14,7 +17,10 @@ public class ProjectTest {
 	
 	//initialize objects
 	Project game = new Project();
+	
+	//initializing character as Batman(0)
 	Character char1 = new Character(0);
+	//initializing character as Superman(1)
 	Character char2 = new Character(1);
 	
 	@Test
@@ -67,5 +73,15 @@ public class ProjectTest {
 		assertEquals(char1.getHealth(), 75);
 	}
 	
-
+	@Test
+	public void testChar1Name() {
+		//test return of characters name
+		assertEquals("Batman", char1.heroName());
+	}
+	
+	@Test
+	public void testChar2() {
+		//test that the hero ID number is returned
+		assertEquals(1,char2.getHeroNum());
+	}
 }
