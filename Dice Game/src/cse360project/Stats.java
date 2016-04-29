@@ -259,26 +259,41 @@ public class Stats
 		String output = "";
 		
 		//add first stat to the string
+		output = output + "----------------------------------------------------\n";
 		output = output + "Wins:\t\t"						 + stats[0][charInt] + "\n";
 		//repeat for each stat
 		output = output + "Losses:\t\t" 					 + stats[1][charInt] + "\n";
 		//for now, assume draw is possible
 		output = output + "Draws:\t\t"						 + stats[2][charInt] + "\n";
 		output = output + "Total Turns:\t\t" 	   			 + stats[3][charInt] + "\n";
+		output = output + "----------------------------------------------------\n";
 		output = output + "Damage Done:\t\t"				 + stats[4][charInt] + "\n";
-		output = output + "Average Damage:\t"				 + decimalFormat.format((float)stats[4][charInt]/stats[3][charInt]) + "\n";
+		output = output + "Average Damage:\t";
+		if(stats[3][charInt] != 0)
+			output = output + decimalFormat.format((float)stats[4][charInt]/stats[3][charInt]) + "\n";
+		else
+			output = output + 0 + "\n";
+		output = output + "----------------------------------------------------\n";
 		output = output + "Damage Taken:\t"					 + stats[5][charInt] + "\n";
 		output = output + "Blocks:\t\t"						 + stats[11][charInt] + "\n";
-		output = output + "Block Rate %:\t\t"				 + decimalFormat.format((float)100*stats[11][charInt]/stats[3][charInt]) + "\n";
+		output = output + "Block Rate %:\t\t";
+		if(stats[3][charInt] != 0)
+			output = output + decimalFormat.format((float)100*stats[11][charInt]/stats[3][charInt]) + "\n";
+		else
+			output = output + 0 + "\n";
+		output = output + "----------------------------------------------------\n";
 		output = output + "Head Hits:\t\t"					 + stats[6][charInt] + "\n";
 		output = output + "Body Hits:\t\t"					 + stats[7][charInt] + "\n";
 		output = output + "Leg Hits:\t\t"		 			 + stats[8][charInt] + "\n";
+		output = output + "----------------------------------------------------\n";
 		output = output + "Critical Hits:\t\t"				 + stats[9][charInt] + "\n";
 		output = output + "Most Turns:\t\t"					 + stats[10][charInt] + "\n";
+		output = output + "----------------------------------------------------\n";
 		
 		//add temporary stats
 		output = output + "Tournament Damage Dealt:\t"		 + tempDamageDone[charInt] + "\n";
-		output = output + "Tournament Damage Taken:\t"		 + tempDamageDone[charInt] + "\n";
+		output = output + "Tournament Damage Taken:\t"		 + tempDamageTaken[charInt] + "\n";
+		output = output + "----------------------------------------------------\n";
 		
 		return output;
 	}
