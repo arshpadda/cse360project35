@@ -35,6 +35,9 @@ public class PlayPanel extends JPanel
 	
 	private PlayPanel thisPanel;
 	
+	private int checkBoxCounter;
+	private int checkBoxLimit;
+	
 	//Button group has different button to club the radio button together
 	private final ButtonGroup buttonGroup1 = new ButtonGroup();
 	private final ButtonGroup buttonGroup2 = new ButtonGroup();
@@ -129,6 +132,8 @@ public class PlayPanel extends JPanel
 	//Constructor initializes components and organize them using certain layouts
 	public PlayPanel(StatPanel sPanel)
 	{
+		checkBoxLimit = 2;
+		checkBoxCounter = 2;
 		//numChars set to -1, should be non negative when used layer
 		numChars = -1;
 		
@@ -207,6 +212,7 @@ public class PlayPanel extends JPanel
 		checkBox = new JCheckBox[8];
 		//initializing each JCheckBox, and adding to the panel
 		checkBox[0] = new JCheckBox(Character.heroNames[0]);
+		checkBox[0].setSelected(true);
 		GridBagConstraints gbc_checkBox1 = new GridBagConstraints();
 		gbc_checkBox1.anchor = GridBagConstraints.WEST;
 		gbc_checkBox1.insets = new Insets(0, 0, 5, 5);
@@ -215,6 +221,7 @@ public class PlayPanel extends JPanel
 		creation.add(checkBox[0], gbc_checkBox1);
 		
 		checkBox[2] = new JCheckBox(Character.heroNames[2]);
+		checkBox[2].setEnabled(false);
 		GridBagConstraints gbc_checkBox3 = new GridBagConstraints();
 		gbc_checkBox3.anchor = GridBagConstraints.WEST;
 		gbc_checkBox3.insets = new Insets(0, 0, 5, 5);
@@ -223,6 +230,7 @@ public class PlayPanel extends JPanel
 		creation.add(checkBox[2], gbc_checkBox3);
 		
 		checkBox[4] = new JCheckBox(Character.heroNames[4]);
+		checkBox[4].setEnabled(false);
 		GridBagConstraints gbc_checkBox5 = new GridBagConstraints();
 		gbc_checkBox5.fill = GridBagConstraints.HORIZONTAL;
 		gbc_checkBox5.insets = new Insets(0, 0, 5, 5);
@@ -231,6 +239,7 @@ public class PlayPanel extends JPanel
 		creation.add(checkBox[4], gbc_checkBox5);
 		
 		checkBox[6] = new JCheckBox(Character.heroNames[6]);
+		checkBox[6].setEnabled(false);
 		GridBagConstraints gbc_checkBox7 = new GridBagConstraints();
 		gbc_checkBox7.fill = GridBagConstraints.HORIZONTAL;
 		gbc_checkBox7.insets = new Insets(0, 0, 5, 5);
@@ -239,6 +248,7 @@ public class PlayPanel extends JPanel
 		creation.add(checkBox[6], gbc_checkBox7);
 		
 		checkBox[1] = new JCheckBox(Character.heroNames[1]);
+		checkBox[1].setSelected(true);
 		GridBagConstraints gbc_checkBox2 = new GridBagConstraints();
 		gbc_checkBox2.anchor = GridBagConstraints.WEST;
 		gbc_checkBox2.insets = new Insets(0, 0, 5, 5);
@@ -247,6 +257,7 @@ public class PlayPanel extends JPanel
 		creation.add(checkBox[1], gbc_checkBox2);
 		
 		checkBox[3] = new JCheckBox(Character.heroNames[3]);
+		checkBox[3].setEnabled(false);
 		GridBagConstraints gbc_checkBox4 = new GridBagConstraints();
 		gbc_checkBox4.anchor = GridBagConstraints.WEST;
 		gbc_checkBox4.insets = new Insets(0, 0, 5, 5);
@@ -255,6 +266,7 @@ public class PlayPanel extends JPanel
 		creation.add(checkBox[3], gbc_checkBox4);
 		
 		checkBox[5] = new JCheckBox(Character.heroNames[5]);
+		checkBox[5].setEnabled(false);
 		GridBagConstraints gbc_checkBox6 = new GridBagConstraints();
 		gbc_checkBox6.fill = GridBagConstraints.HORIZONTAL;
 		gbc_checkBox6.insets = new Insets(0, 0, 5, 5);
@@ -263,6 +275,7 @@ public class PlayPanel extends JPanel
 		creation.add(checkBox[5], gbc_checkBox6);
 		
 		checkBox[7] = new JCheckBox(Character.heroNames[7]);
+		checkBox[7].setEnabled(false);
 		GridBagConstraints gbc_checkBox8 = new GridBagConstraints();
 		gbc_checkBox8.fill = GridBagConstraints.HORIZONTAL;
 		gbc_checkBox8.insets = new Insets(0, 0, 5, 5);
@@ -709,10 +722,22 @@ public class PlayPanel extends JPanel
 		//listener for the btnAttack
 		btnAttack.addActionListener(new ButtonListener());
 		
+		//listeners for each checkbox and the jcombobox
+		checkBox[0].addActionListener(new CheckBoxListener());
+		checkBox[1].addActionListener(new CheckBoxListener());
+		checkBox[2].addActionListener(new CheckBoxListener());
+		checkBox[3].addActionListener(new CheckBoxListener());
+		checkBox[4].addActionListener(new CheckBoxListener());
+		checkBox[5].addActionListener(new CheckBoxListener());
+		checkBox[6].addActionListener(new CheckBoxListener());
+		checkBox[7].addActionListener(new CheckBoxListener());
+		
+		numCharacters.addActionListener(new CheckBoxListener());
+		
 		//Initialize the Dice Object
 		die = new Dice();  
 	}
-	
+		
 	/**
 	 * Private method to change char1 and char2 to different characters
 	 * @param replacementCharacter1 character to replace the first character, should be the integer between 0 and (numChars-1)
@@ -772,7 +797,66 @@ public class PlayPanel extends JPanel
 		}
 		return foundIndex;
 	}
- 
+	
+	
+	//CheckBoxListener is a listener class that listens to the checkboxes and combobox
+	private class CheckBoxListener implements ActionListener
+	{
+		//action is performed on one of the checkboxes
+		public void actionPerformed(ActionEvent event) 
+		{
+			//convert the event to a JCheckBox object if it wasn't the JComboBox
+			if(event.getSource() != numCharacters)
+			{
+				JCheckBox source = (JCheckBox)event.getSource();
+				if(source.isSelected())
+				{
+					checkBoxCounter++;
+					if(checkBoxCounter >= checkBoxLimit)
+						for(int checkBoxIndex = 0; checkBoxIndex < 8; checkBoxIndex++)
+							if(!checkBox[checkBoxIndex].isSelected())
+								checkBox[checkBoxIndex].setEnabled(false);
+				}
+				else if(!source.isSelected())
+				{
+					checkBoxCounter--;
+					if(checkBoxCounter < checkBoxLimit)
+					{
+						for(int checkBoxIndex = 0; checkBoxIndex < 8; checkBoxIndex++)
+							if(!checkBox[checkBoxIndex].isSelected())
+								checkBox[checkBoxIndex].setEnabled(true);
+					}
+					else if(checkBoxCounter >= checkBoxLimit)
+					{
+						for(int checkBoxIndex = 0; checkBoxIndex < 8; checkBoxIndex++)
+							if(!checkBox[checkBoxIndex].isSelected())
+								checkBox[checkBoxIndex].setEnabled(false);
+					}
+					
+				}
+			}
+			else
+			{
+					JComboBox source = (JComboBox)event.getSource();
+					int limit = (int)source.getSelectedItem();
+					if(limit != checkBoxLimit)
+					{
+						checkBoxLimit = limit;
+						if(checkBoxCounter < checkBoxLimit)
+						{
+							for(int checkBoxIndex = 0; checkBoxIndex < 8; checkBoxIndex++)
+								if(!checkBox[checkBoxIndex].isSelected())
+									checkBox[checkBoxIndex].setEnabled(true);
+						}
+						else if(checkBoxCounter >= checkBoxLimit)
+							for(int checkBoxIndex = 0; checkBoxIndex < 8; checkBoxIndex++)
+								if(!checkBox[checkBoxIndex].isSelected())
+									checkBox[checkBoxIndex].setEnabled(false);
+							
+					}
+			}
+		}
+	}
 	//ButtonListener is a listener class that listens to the attack button
 	//Implement the class object of the two character here
 	private class ButtonListener implements ActionListener
