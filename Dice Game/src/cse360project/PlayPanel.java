@@ -805,29 +805,40 @@ public class PlayPanel extends JPanel
 		//action is performed on one of the checkboxes
 		public void actionPerformed(ActionEvent event) 
 		{
-			//convert the event to a JCheckBox object if it wasn't the JComboBox
+			//convert the event to a JCheckBox object if the source wasn't the JComboBox
 			if(event.getSource() != numCharacters)
 			{
+				//create a checkbox object from the event
 				JCheckBox source = (JCheckBox)event.getSource();
+				//determine if the source was selected or unselected
+				//case where source is selected
 				if(source.isSelected())
 				{
+					//increment counter
 					checkBoxCounter++;
+					//if no more checkboxes should be selected, disable the unselected
 					if(checkBoxCounter >= checkBoxLimit)
 						for(int checkBoxIndex = 0; checkBoxIndex < 8; checkBoxIndex++)
 							if(!checkBox[checkBoxIndex].isSelected())
 								checkBox[checkBoxIndex].setEnabled(false);
 				}
+				//case where source was unselected
 				else if(!source.isSelected())
 				{
+					//decrement counter
 					checkBoxCounter--;
+					//if counter is less than limit, we can now select more
 					if(checkBoxCounter < checkBoxLimit)
 					{
+						//loop through unselected checkboxes and enable them
 						for(int checkBoxIndex = 0; checkBoxIndex < 8; checkBoxIndex++)
 							if(!checkBox[checkBoxIndex].isSelected())
 								checkBox[checkBoxIndex].setEnabled(true);
 					}
+					//if too many or enough checkboxes are still selected
 					else if(checkBoxCounter >= checkBoxLimit)
 					{
+						//loop through unselected checkboxes and disable them
 						for(int checkBoxIndex = 0; checkBoxIndex < 8; checkBoxIndex++)
 							if(!checkBox[checkBoxIndex].isSelected())
 								checkBox[checkBoxIndex].setEnabled(false);
@@ -835,28 +846,62 @@ public class PlayPanel extends JPanel
 					
 				}
 			}
+			//case where the JComboBox triggered the event
 			else
 			{
-					JComboBox source = (JComboBox)event.getSource();
-					int limit = (int)source.getSelectedItem();
-					if(limit != checkBoxLimit)
+			//create JComboBox object from the event
+				JComboBox source = (JComboBox)event.getSource();
+				//get the selected item from the JComboBox
+				int limit = (int)source.getSelectedItem();
+				//if there is a change in the limit, proceed
+				if(limit != checkBoxLimit)
+				{
+					//case where the new limit is greater than the old, don't need to deselect all checkboxes
+					if(checkBoxLimit < limit)
 					{
-						checkBoxLimit = limit;
-						if(checkBoxCounter < checkBoxLimit)
+						if(checkBoxCounter < limit)
 						{
 							for(int checkBoxIndex = 0; checkBoxIndex < 8; checkBoxIndex++)
 								if(!checkBox[checkBoxIndex].isSelected())
 									checkBox[checkBoxIndex].setEnabled(true);
 						}
-						else if(checkBoxCounter >= checkBoxLimit)
+						else if(checkBoxCounter >= limit)
 							for(int checkBoxIndex = 0; checkBoxIndex < 8; checkBoxIndex++)
 								if(!checkBox[checkBoxIndex].isSelected())
 									checkBox[checkBoxIndex].setEnabled(false);
-							
 					}
+					//case where new limit is less than the old
+					else if(checkBoxLimit > limit)
+					{
+						//more specifically, more than the new limit are selected
+						if(checkBoxCounter > limit)
+						{
+							//deselect every checkbox and enable it
+							for(int checkBoxIndex = 0; checkBoxIndex < 8; checkBoxIndex++)
+							{
+								checkBox[checkBoxIndex].setEnabled(true);
+								checkBox[checkBoxIndex].setSelected(false);
+							}
+							//reset the counter
+							checkBoxCounter = 0;
+						}
+						//case where the amount selected equals the new limit
+						else if(checkBoxCounter == limit)
+						{
+							//only disable unselected checkboxes
+							for(int checkBoxIndex = 0; checkBoxIndex < 8; checkBoxIndex++)
+								if(!checkBox[checkBoxIndex].isSelected())
+									checkBox[checkBoxIndex].setEnabled(false);
+						}
+					}
+					//update the limit
+					checkBoxLimit = limit;
+				}
 			}
 		}
 	}
+	
+	
 	//ButtonListener is a listener class that listens to the attack button
 	//Implement the class object of the two character here
 	private class ButtonListener implements ActionListener
