@@ -35,9 +35,7 @@ public class ProjectTest {
 		Dice die = new Dice();
 		assertNotNull(die);
 	}
-	
-
-	
+		
 	@Test
 	public void testChar1Health() {
 		//test to verify the health of character at the beginning of a game

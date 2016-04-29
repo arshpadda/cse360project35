@@ -41,9 +41,8 @@ public class PlayPanel extends JPanel
 	private final ButtonGroup buttonGroup3 = new ButtonGroup();
 	private final ButtonGroup buttonGroup4 = new ButtonGroup();
 	
-	//Images of characters
-	private ImageIcon imgBatman = new ImageIcon("Batman1.jpg");
-	private ImageIcon imgSuperman = new ImageIcon("Superman.jpg");
+	//Game Startup Image
+	private ImageIcon imgGame = new ImageIcon("Game.jpg");
 	
 	//Class Object
 	private Character char2;
@@ -176,9 +175,10 @@ public class PlayPanel extends JPanel
 		gbl_creation.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		creation.setLayout(gbl_creation);
 		
-		lblImage = new JLabel("Image");
+		lblImage = new JLabel("");
+		lblImage.setIcon(imgGame);
 		GridBagConstraints gbc_lblImage = new GridBagConstraints();
-		gbc_lblImage.gridwidth = 4;
+		gbc_lblImage.gridwidth = 8;
 		gbc_lblImage.insets = new Insets(0, 0, 5, 5);
 		gbc_lblImage.gridx = 1;
 		gbc_lblImage.gridy = 5;

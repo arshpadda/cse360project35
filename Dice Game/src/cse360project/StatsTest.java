@@ -82,7 +82,6 @@ public class StatsTest
 		
 		//call writeStats()
 		stats.updateFile();
-		
 
 		//check that the length is the same, there was no change in the stats so the size should be the same
 		assertEquals(oldLength, file.length());
