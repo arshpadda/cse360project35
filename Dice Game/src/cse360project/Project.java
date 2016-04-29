@@ -12,12 +12,15 @@ import java.awt.*;
 
 public class Project extends JApplet
 {
+	//Project Class constructor 
 	public Project() {
 	}
-	private int APPLET_WIDTH = 850, APPLET_HEIGHT = 675;
-	private JTabbedPane tPane;
-	private PlayPanel playPanel;
-	private StatPanel statPanel;
+	
+	private int APPLET_WIDTH = 850;		//Width of the applet opened
+	private int APPLET_HEIGHT = 675;	//Height of the applet opened
+	private JTabbedPane tPane;			//JTabbedPane Object
+	private PlayPanel playPanel;		//Play Panel Object
+	private StatPanel statPanel;		//Stat Panel Object
 	
 	//Applet launches with two tabs
 	public void init()
@@ -33,9 +36,10 @@ public class Project extends JApplet
 		setSize (APPLET_WIDTH, APPLET_HEIGHT); //set Applet size
 	}
 	
+	//Destroy function when the applet closes
 	public void destroy()
 	{
-		statPanel.writeStats();
+		statPanel.writeStats();		//Write the stats before the applet is closed. 
 	}
 }
 
