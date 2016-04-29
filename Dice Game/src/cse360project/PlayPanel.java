@@ -42,7 +42,8 @@ public class PlayPanel extends JPanel
 	private final ButtonGroup buttonGroup4 = new ButtonGroup();
 	
 	//Game Startup Image
-	private ImageIcon imgGame = new ImageIcon("Game.jpg");
+	ImageIcon startImage = new ImageIcon(PlayPanel.class.getResource("/cse360project/Group.jpg"));
+	ImageIcon titleImage = new ImageIcon(PlayPanel.class.getResource("/cse360project/Title.png"));
 	
 	//Class Object
 	private Character char2;
@@ -117,11 +118,12 @@ public class PlayPanel extends JPanel
 	private JPanel tournament_1;
 	private JLabel tournament[];
 	private JLabel numCharactersLabel;
-	private JLabel lblImage;
+	private JLabel lblStartImage;
 	private JButton playButton;
 	private JComboBox<Integer> numCharacters;
 	private JCheckBox checkBox[];
 	private JLabel lblNewLabel;
+	private JLabel lblTitle;
 
 	//Initialize the character object here
 	//Constructor initializes components and organize them using certain layouts
@@ -170,19 +172,28 @@ public class PlayPanel extends JPanel
 		add(creation);		
 		GridBagLayout gbl_creation = new GridBagLayout();
 		gbl_creation.columnWidths = new int[]{12, 25, 22, 0, 11, 7, 0};
-		gbl_creation.rowHeights = new int[]{23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_creation.rowHeights = new int[]{23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_creation.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_creation.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_creation.rowWeights = new double[]{1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		creation.setLayout(gbl_creation);
 		
-		lblImage = new JLabel("");
-		lblImage.setIcon(imgGame);
-		GridBagConstraints gbc_lblImage = new GridBagConstraints();
-		gbc_lblImage.gridwidth = 8;
-		gbc_lblImage.insets = new Insets(0, 0, 5, 5);
-		gbc_lblImage.gridx = 1;
-		gbc_lblImage.gridy = 5;
-		creation.add(lblImage, gbc_lblImage);
+		lblTitle = new JLabel("");
+		lblTitle.setIcon(titleImage);
+		GridBagConstraints gbc_lblTitle = new GridBagConstraints();
+		gbc_lblTitle.gridwidth = 4;
+		gbc_lblTitle.insets = new Insets(0, 0, 5, 5);
+		gbc_lblTitle.gridx = 1;
+		gbc_lblTitle.gridy = 0;
+		creation.add(lblTitle, gbc_lblTitle);
+		
+		lblStartImage = new JLabel("");
+		lblStartImage.setIcon(startImage);
+		GridBagConstraints gbc_lblStartImage = new GridBagConstraints();
+		gbc_lblStartImage.gridwidth = 4;
+		gbc_lblStartImage.insets = new Insets(0, 0, 5, 5);
+		gbc_lblStartImage.gridx = 1;
+		gbc_lblStartImage.gridy = 1;
+		creation.add(lblStartImage, gbc_lblStartImage);
 		
 		lblNewLabel = new JLabel("Select 2, 4 or 8 characters");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
@@ -265,7 +276,7 @@ public class PlayPanel extends JPanel
 		gbc_numCharactersLabel.anchor = GridBagConstraints.EAST;
 		gbc_numCharactersLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_numCharactersLabel.gridx = 1;
-		gbc_numCharactersLabel.gridy = 16;
+		gbc_numCharactersLabel.gridy = 17;
 		creation.add(numCharactersLabel, gbc_numCharactersLabel);
 		
 		numCharacters = new JComboBox<Integer>();
@@ -274,7 +285,7 @@ public class PlayPanel extends JPanel
 		gbc_numCharacters.insets = new Insets(0, 0, 5, 5);
 		gbc_numCharacters.fill = GridBagConstraints.HORIZONTAL;
 		gbc_numCharacters.gridx = 2;
-		gbc_numCharacters.gridy = 16;
+		gbc_numCharacters.gridy = 17;
 		creation.add(numCharacters, gbc_numCharacters);
 		//button to create a tournament, switches to the next screen
 		create = new JButton("Create");
@@ -283,7 +294,7 @@ public class PlayPanel extends JPanel
 		gbc_create.gridwidth = 2;
 		gbc_create.insets = new Insets(0, 0, 5, 5);
 		gbc_create.gridx = 3;
-		gbc_create.gridy = 16;
+		gbc_create.gridy = 17;
 		creation.add(create, gbc_create);
 		
 		//listener for the create button
