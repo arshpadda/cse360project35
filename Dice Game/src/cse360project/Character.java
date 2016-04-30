@@ -28,7 +28,7 @@ public class Character {
 			{"Energy Beam","Ring Construct","Fist Construct"},
 			{"Trident Throw","Shark Attack","Whirpool"},
 			{"Sonic Disruptor","Shock","Metal Fist"},
-			{"Mace Swing","Heatbutt","Katar Attack"}
+			{"Mace Swing","Heatbutt","Katar"}
 	};
 	
 	//ImageIcon array that holds all of the characters pictures
