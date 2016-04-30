@@ -723,16 +723,16 @@ public class PlayPanel extends JPanel
 		btnAttack.addActionListener(new ButtonListener());
 		
 		//listeners for each checkbox and the jcombobox
-		checkBox[0].addActionListener(new CheckBoxListener());
-		checkBox[1].addActionListener(new CheckBoxListener());
-		checkBox[2].addActionListener(new CheckBoxListener());
-		checkBox[3].addActionListener(new CheckBoxListener());
-		checkBox[4].addActionListener(new CheckBoxListener());
-		checkBox[5].addActionListener(new CheckBoxListener());
-		checkBox[6].addActionListener(new CheckBoxListener());
-		checkBox[7].addActionListener(new CheckBoxListener());
+		checkBox[0].addItemListener(new CheckBoxListener());
+		checkBox[1].addItemListener(new CheckBoxListener());
+		checkBox[2].addItemListener(new CheckBoxListener());
+		checkBox[3].addItemListener(new CheckBoxListener());
+		checkBox[4].addItemListener(new CheckBoxListener());
+		checkBox[5].addItemListener(new CheckBoxListener());
+		checkBox[6].addItemListener(new CheckBoxListener());
+		checkBox[7].addItemListener(new CheckBoxListener());
 		
-		numCharacters.addActionListener(new CheckBoxListener());
+		numCharacters.addItemListener(new CheckBoxListener());
 		
 		//Initialize the Dice Object
 		die = new Dice();  
@@ -800,10 +800,10 @@ public class PlayPanel extends JPanel
 	
 	
 	//CheckBoxListener is a listener class that listens to the checkboxes and combobox
-	private class CheckBoxListener implements ActionListener
+	private class CheckBoxListener implements ItemListener
 	{
 		//action is performed on one of the checkboxes
-		public void actionPerformed(ActionEvent event) 
+		public void itemStateChanged(ItemEvent event) 
 		{
 			//convert the event to a JCheckBox object if the source wasn't the JComboBox
 			if(event.getSource() != numCharacters)
@@ -1083,6 +1083,7 @@ public class PlayPanel extends JPanel
 			else if(source == create)
 			{
 				//reset temporary stats
+				sPanel.resetTemp();
 				//Set up the tournament screen based on number of players
 				numChars = (int)numCharacters.getSelectedItem();
 				
@@ -1101,6 +1102,34 @@ public class PlayPanel extends JPanel
 							{
 								chosenCharacters[selectedIndex] = checkIndex;
 								selectedIndex++;
+							}
+						}
+						//check 4 characters were selected
+						if(selectedIndex != 4)
+						{
+							for(int index = selectedIndex; index < 4; index++)
+							{
+								if(!checkBox[0].isSelected())
+								{
+									checkBox[0].setSelected(true);
+									chosenCharacters[index] = 0;
+								}
+								else if(!checkBox[1].isSelected())
+								{
+									checkBox[1].setSelected(true);
+									chosenCharacters[index] = 1;
+								}
+								else if(!checkBox[2].isSelected())
+								{
+									checkBox[2].setSelected(true);
+									chosenCharacters[index] = 2;
+								}
+								else if(!checkBox[3].isSelected())
+								{
+									checkBox[3].setSelected(true);
+									chosenCharacters[index] = 3;
+								}
+								
 							}
 						}
 							
@@ -1133,11 +1162,37 @@ public class PlayPanel extends JPanel
 					int char1Int = 0;
 					int char2Int = 0;
 					//find which two characters are picked
-					while(!checkBox[char1Int].isSelected())
+					while(char1Int < 8 && !checkBox[char1Int].isSelected())
 						char1Int++;
 					char2Int = char1Int + 1;
-					while(!checkBox[char2Int].isSelected())
+					while(char2Int < 8 && !checkBox[char2Int].isSelected())
 						char2Int++;
+					//check that two selections were found successfully
+					//means no selections
+					if(char1Int >= 8)
+					{
+						char1Int = 0;
+						char2Int = 1;
+						//update checkboxes and counter
+						checkBox[char1Int].setSelected(true);
+						checkBox[char2Int].setSelected(true);
+					}
+					//means only 1 selections
+					else if(char2Int >= 8)
+					{
+						//pick either batman or superman as the second character, by default
+						if(char1Int != 0)
+						{
+							char2Int = 0;
+						}
+						else if(char1Int != 1)
+						{
+							char2Int = 1;
+						}
+						//update checkbox and counter
+						checkBox[char2Int].setSelected(true);
+					}
+					
 					changeChars(char1Int, char2Int);
 					cardLayout.last(thisPanel);
 				}
