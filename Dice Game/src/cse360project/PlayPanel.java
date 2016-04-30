@@ -127,6 +127,8 @@ public class PlayPanel extends JPanel
 	private JCheckBox checkBox[];
 	private JLabel lblNewLabel;
 	private JLabel lblTitle;
+	private JLabel lblTournamentBracket;
+	private JLabel lblMatch;
 
 	//Initialize the character object here
 	//Constructor initializes components and organize them using certain layouts
@@ -159,7 +161,7 @@ public class PlayPanel extends JPanel
 		
 		//layout for the play screen
 		gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 229, 0, 229, 0, 0};
+		gridBagLayout.columnWidths = new int[]{0, 229, 135, 229, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 32, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
@@ -176,33 +178,33 @@ public class PlayPanel extends JPanel
 		//the first card is the creation screen
 		add(creation);		
 		GridBagLayout gbl_creation = new GridBagLayout();
-		gbl_creation.columnWidths = new int[]{12, 25, 22, 0, 11, 7, 0};
+		gbl_creation.columnWidths = new int[]{12, 25, 22, 0, 0, 11, 7, 0};
 		gbl_creation.rowHeights = new int[]{23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_creation.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_creation.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_creation.rowWeights = new double[]{1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		creation.setLayout(gbl_creation);
 		
 		lblTitle = new JLabel("");
 		lblTitle.setIcon(titleImage);
 		GridBagConstraints gbc_lblTitle = new GridBagConstraints();
-		gbc_lblTitle.gridwidth = 4;
-		gbc_lblTitle.insets = new Insets(0, 0, 5, 5);
-		gbc_lblTitle.gridx = 1;
+		gbc_lblTitle.gridwidth = 7;
+		gbc_lblTitle.insets = new Insets(0, 0, 5, 0);
+		gbc_lblTitle.gridx = 0;
 		gbc_lblTitle.gridy = 0;
 		creation.add(lblTitle, gbc_lblTitle);
 		
 		lblStartImage = new JLabel("");
 		lblStartImage.setIcon(startImage);
 		GridBagConstraints gbc_lblStartImage = new GridBagConstraints();
-		gbc_lblStartImage.gridwidth = 4;
-		gbc_lblStartImage.insets = new Insets(0, 0, 5, 5);
-		gbc_lblStartImage.gridx = 1;
+		gbc_lblStartImage.gridwidth = 7;
+		gbc_lblStartImage.insets = new Insets(0, 0, 5, 0);
+		gbc_lblStartImage.gridx = 0;
 		gbc_lblStartImage.gridy = 1;
 		creation.add(lblStartImage, gbc_lblStartImage);
 		
 		lblNewLabel = new JLabel("Select 2, 4 or 8 characters");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.gridwidth = 4;
+		gbc_lblNewLabel.gridwidth = 5;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 1;
 		gbc_lblNewLabel.gridy = 13;
@@ -284,7 +286,7 @@ public class PlayPanel extends JPanel
 		creation.add(checkBox[7], gbc_checkBox8);
 		
 		numCharactersLabel = new JLabel("Number of Players");
-		numCharactersLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		numCharactersLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		GridBagConstraints gbc_numCharactersLabel = new GridBagConstraints();
 		gbc_numCharactersLabel.anchor = GridBagConstraints.EAST;
 		gbc_numCharactersLabel.insets = new Insets(0, 0, 5, 5);
@@ -300,11 +302,13 @@ public class PlayPanel extends JPanel
 		gbc_numCharacters.gridx = 2;
 		gbc_numCharacters.gridy = 17;
 		creation.add(numCharacters, gbc_numCharacters);
+		
+		numCharacters.addItemListener(new CheckBoxListener());
 		//button to create a tournament, switches to the next screen
 		create = new JButton("Create");
 		GridBagConstraints gbc_create = new GridBagConstraints();
 		gbc_create.fill = GridBagConstraints.BOTH;
-		gbc_create.gridwidth = 2;
+		gbc_create.gridwidth = 3;
 		gbc_create.insets = new Insets(0, 0, 5, 5);
 		gbc_create.gridx = 3;
 		gbc_create.gridy = 17;
@@ -316,8 +320,8 @@ public class PlayPanel extends JPanel
 		tournament_1 = new JPanel();
 		add(tournament_1, "name_15822071098700");
 		GridBagLayout gbl_tournament_1 = new GridBagLayout();
-		gbl_tournament_1.columnWidths = new int[]{0, 0, 0, 0, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_tournament_1.rowHeights = new int[]{0, 0, 23, 0, 0, 0, 0, 0, 0, 0};
+		gbl_tournament_1.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_tournament_1.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_tournament_1.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		gbl_tournament_1.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		tournament_1.setLayout(gbl_tournament_1);
@@ -436,10 +440,31 @@ public class PlayPanel extends JPanel
 		gbctournament7.gridy = 5;
 		tournament_1.add(tournament[7], gbctournament7);
 		
+		lblMatch = new JLabel("Match 1");
+		lblMatch.setFont(new Font("Tahoma", Font.BOLD, 13));
+		GridBagConstraints gbc_lblMatch = new GridBagConstraints();
+		gbc_lblMatch.gridwidth = 5;
+		gbc_lblMatch.insets = new Insets(0, 0, 5, 5);
+		gbc_lblMatch.gridx = 6;
+		gbc_lblMatch.gridy = 1;
+		tournament_1.add(lblMatch, gbc_lblMatch);
+		
+		lblTournamentBracket = new JLabel("Tournament Bracket");
+		lblTournamentBracket.setFont(new Font("Tahoma", Font.BOLD, 15));
+		GridBagConstraints gbc_lblTournamentBracket = new GridBagConstraints();
+		gbc_lblTournamentBracket.anchor = GridBagConstraints.NORTH;
+		gbc_lblTournamentBracket.gridwidth = 5;
+		gbc_lblTournamentBracket.insets = new Insets(0, 0, 5, 5);
+		gbc_lblTournamentBracket.gridx = 6;
+		gbc_lblTournamentBracket.gridy = 1;
+		tournament_1.add(lblTournamentBracket, gbc_lblTournamentBracket);
+		
 		playButton = new JButton("Play");
 		GridBagConstraints gbc_playButton = new GridBagConstraints();
+		gbc_playButton.fill = GridBagConstraints.HORIZONTAL;
+		gbc_playButton.gridwidth = 3;
 		gbc_playButton.insets = new Insets(0, 0, 5, 5);
-		gbc_playButton.gridx = 8;
+		gbc_playButton.gridx = 7;
 		gbc_playButton.gridy = 7;
 		tournament_1.add(playButton, gbc_playButton);
 		
@@ -504,6 +529,7 @@ public class PlayPanel extends JPanel
 		
 		//Initialize the Label of character1
 		char1Label = new Label(char1.heroName());
+		char1Label.setFont(new Font("Tahoma", Font.BOLD, 12));
 		GridBagConstraints gbc_char1Label = new GridBagConstraints();
 		gbc_char1Label.insets = new Insets(0, 0, 5, 5);
 		gbc_char1Label.gridx = 1;
@@ -512,6 +538,7 @@ public class PlayPanel extends JPanel
 
 		//Initialize the Label of character2
 		char2Label = new Label(char2.heroName());
+		char2Label.setFont(new Font("Tahoma", Font.BOLD, 12));
 		GridBagConstraints gbc_char2Label = new GridBagConstraints();
 		gbc_char2Label.insets = new Insets(0, 0, 5, 5);
 		gbc_char2Label.gridx = 3;
@@ -698,6 +725,16 @@ public class PlayPanel extends JPanel
 		buttonGroup3.add(rdbtnLeg);
 		rdbtnLeg.setActionCommand("3");
 		
+		btnAttack = new JButton("Attack");
+		GridBagConstraints gbc_btnAttack = new GridBagConstraints();
+		gbc_btnAttack.insets = new Insets(0, 0, 5, 5);
+		gbc_btnAttack.gridx = 2;
+		gbc_btnAttack.gridy = 13;
+		play.add(btnAttack, gbc_btnAttack);
+		
+		//listener for the btnAttack
+		btnAttack.addActionListener(new ButtonListener());
+		
 		//Initialize the Radiobutton for leg block of character2
 		rdbtnLeg_1 = new JRadioButton("Leg");
 		GridBagConstraints gbc_rdbtnLeg_1 = new GridBagConstraints();
@@ -709,18 +746,8 @@ public class PlayPanel extends JPanel
 		buttonGroup4.add(rdbtnLeg_1);
 		rdbtnLeg_1.setActionCommand("3");
 		
-		btnAttack = new JButton("Attack");
-		GridBagConstraints gbc_btnAttack = new GridBagConstraints();
-		gbc_btnAttack.insets = new Insets(0, 0, 5, 5);
-		gbc_btnAttack.gridx = 2;
-		gbc_btnAttack.gridy = 14;
-		play.add(btnAttack, gbc_btnAttack);
-		
 		//listener for the playButton
 		playButton.addActionListener(new ButtonListener());
-		
-		//listener for the btnAttack
-		btnAttack.addActionListener(new ButtonListener());
 		
 		//listeners for each checkbox and the jcombobox
 		checkBox[0].addItemListener(new CheckBoxListener());
@@ -731,8 +758,6 @@ public class PlayPanel extends JPanel
 		checkBox[5].addItemListener(new CheckBoxListener());
 		checkBox[6].addItemListener(new CheckBoxListener());
 		checkBox[7].addItemListener(new CheckBoxListener());
-		
-		numCharacters.addItemListener(new CheckBoxListener());
 		
 		//Initialize the Dice Object
 		die = new Dice();  
@@ -984,9 +1009,9 @@ public class PlayPanel extends JPanel
 					char2.updateHealth(char2Health);
 					char1.updateHealth(char1Health);
 					
-					// if condition to stop the game
-					System.out.println("char1Health : "+char1Health);
-					System.out.println("char2Health : "+char2Health);
+					//Console output disabled
+					//System.out.println("char1Health : "+char1Health);
+					//System.out.println("char2Health : "+char2Health);
 	
 					//Update the progress bar of the characters 
 					progressBar_char1.setValue(char1Health);
@@ -1001,7 +1026,8 @@ public class PlayPanel extends JPanel
 						winnerLabel.setText("Draw");
 					}
 					else if(char1Health <= 0 && char2Health > 0){
-						System.out.print(char2.heroName() + " Wins");
+						//console output disabled
+						//System.out.print(char2.heroName() + " Wins");
 						winnerLabel.setText(char2.heroName() + " Wins");
 						//record winner's name in a variable
 						winner = char2.heroName();
@@ -1009,7 +1035,8 @@ public class PlayPanel extends JPanel
 						btnAttack.setText("Continue");
 					}
 					else if(char1Health >0 && char2Health <=0){
-						System.out.print(char1.heroName() + " Wins");
+						//console ouput disabled
+						//System.out.print(char1.heroName() + " Wins");
 						winnerLabel.setText(char1.heroName() + " Wins");
 						//record winner's name in a variable
 						winner = char1.heroName();
@@ -1060,8 +1087,16 @@ public class PlayPanel extends JPanel
 						{
 							tournament[7 + match].setText(winner);
 						}
+						
 						//increment matches then change to tournament screen
 						match++;
+						
+						//update the match label if it wasn't the last match that ended
+						if(!((match == 4 && numChars == 4) || (match == 8 && numChars == 8)))
+							lblMatch.setText("Match " + match);
+						else
+							lblMatch.setText(tournament[14].getText() + " Wins");
+						
 						cardLayout.previous(thisPanel);
 						
 						//reset health to full
@@ -1234,6 +1269,7 @@ public class PlayPanel extends JPanel
 					tournament[13].setText("Finalist");
 					tournament[14].setText("Champion");
 					match = 1;
+					lblMatch.setText("Match " + match);
 					//go back to the create screen
 					cardLayout.first(thisPanel);
 				}
