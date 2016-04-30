@@ -155,6 +155,15 @@ public class StatPanel extends JPanel
 	}
 	
 	/**
+	 * Called when a new tournament starts, resets temporary stats
+	 */
+	public void resetTemp()
+	{
+		//call method on the stats object
+		stats.resetTemp();
+	}
+	
+	/**
 	 * Call at the end of each match, with total turns and the int for each character
 	 * @param character1 integer representing first character
 	 * @param character2 integer representing second character
