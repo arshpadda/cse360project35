@@ -283,7 +283,7 @@ public class Stats
 			output = output + 0 + "\n";
 		output = output + "----------------------------------------------------\n";
 		output = output + "Head Hits:\t\t"					 + stats[6][charInt] + "\n";
-		output = output + "Body Hits:\t\t"					 + stats[7][charInt] + "\n";
+		output = output + "Torso Hits:\t\t"					 + stats[7][charInt] + "\n";
 		output = output + "Leg Hits:\t\t"		 			 + stats[8][charInt] + "\n";
 		output = output + "----------------------------------------------------\n";
 		output = output + "Critical Hits:\t\t"				 + stats[9][charInt] + "\n";
